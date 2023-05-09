@@ -1,0 +1,22 @@
+{
+  "name": "cocreate-app",
+  "version": "0.0.1",
+  "description": "An app where the digital actors cocreate together",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mdp-cocreate/cocreate-app.git"
+  },
+  "keywords": [
+    "nextjs"
+  ],
+  "author": "https://github.com/edgarcrssn",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mdp-cocreate/cocreate-app/issues"
+  },
+  "homepage": "https://github.com/mdp-cocreate/cocreate-app#readme"
+}
