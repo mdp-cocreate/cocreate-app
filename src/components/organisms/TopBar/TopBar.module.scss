@@ -1,0 +1,36 @@
+@import 'src/styles/app';
+
+.topBar {
+  background-color: $neutral-2;
+  padding: 1.25rem 1.5rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2.5rem;
+
+  .iconButtonsContainer,
+  .callToActionContainer {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .breadcrumbContainer {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  position: relative;
+
+  &::after {
+    pointer-events: none;
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-bottom: 0.5px solid $primary-light;
+  }
+}

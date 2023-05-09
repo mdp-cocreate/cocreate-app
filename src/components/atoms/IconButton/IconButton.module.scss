@@ -1,0 +1,43 @@
+@import 'src/styles/app';
+
+.iconButton {
+  @include reset-button;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  background-color: $neutral-2;
+
+  transition: background-color $transition-duration;
+
+  > svg path {
+    fill: $neutral;
+    transition: fill $transition-duration;
+  }
+
+  &:hover,
+  &:active,
+  &.active {
+    background-color: $primary-light;
+
+    > svg path {
+      fill: $primary;
+    }
+  }
+
+  &.active {
+    pointer-events: none;
+  }
+
+  &:disabled {
+    pointer-events: none;
+    background-color: $primary-light;
+
+    > svg path {
+      fill: $neutral-3;
+    }
+  }
+}

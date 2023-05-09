@@ -1,0 +1,23 @@
+.dashboardSkeleton {
+  width: 100vw;
+  max-width: 100vw;
+  height: 100vh;
+  max-height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+
+  .body {
+    flex-grow: 1;
+    overflow: hidden;
+    display: flex;
+
+    .aside {
+      background-color: red;
+    }
+    .page {
+      flex-grow: 1;
+      overflow: auto;
+    }
+  }
+}

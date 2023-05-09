@@ -1,0 +1,22 @@
+.authSkeleton {
+  height: 100vh;
+  max-height: 100vh;
+  width: 100vw;
+  max-width: 100vw;
+  overflow: hidden;
+
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+
+  .page {
+    width: 100%;
+    padding: 5rem;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .aside {
+    width: 100%;
+    position: relative;
+  }
+}

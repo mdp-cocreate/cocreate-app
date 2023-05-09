@@ -1,3 +1,13 @@
+import { Inter } from 'next/font/google';
+
+import '@/styles/globals.css';
+
+const inter = Inter({
+  weight: ['400', '500', '600'],
+  style: ['normal'],
+  subsets: ['latin'],
+});
+
 export default function RootLayout({
   children,
 }: {
@@ -5,7 +15,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="fr">
-      <body>{children}</body>
+      <body className={inter.className}>{children}</body>
     </html>
   );
 }

@@ -1,0 +1,86 @@
+@import 'src/styles/app';
+
+.sideBarLink {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+
+  > .text {
+    @include text-no-wrap;
+  }
+
+  background-color: $neutral-2;
+
+  color: $neutral-3;
+
+  > svg {
+    width: 1.5rem;
+    min-width: 1.5rem;
+    aspect-ratio: 1/1;
+
+    path {
+      fill: $neutral-3;
+
+      transition: fill $transition-duration;
+    }
+  }
+
+  transition: background-color $transition-duration, color $transition-duration;
+
+  &:hover,
+  &:active,
+  &.active {
+    background-color: $primary-light;
+
+    color: $primary;
+
+    > svg path {
+      fill: $primary;
+    }
+  }
+
+  &.active {
+    pointer-events: none;
+  }
+
+  &.disabled {
+    pointer-events: none;
+  }
+
+  &.alert {
+    color: $alert;
+
+    > svg path {
+      fill: $alert;
+    }
+
+    &:hover,
+    &:active {
+      background-color: $alert-light;
+    }
+  }
+
+  $categories: (
+    'uiuxDesign': $uiux-design,
+    'development': $development,
+    'graphicDesign': $graphic-design,
+    'webmarketing': $webmarketing,
+    'cybersecurity': $cybersecurity,
+    'data': $data,
+    'audiovisual': $audiovisual,
+  );
+
+  @each $class, $variable in $categories {
+    &.#{$class}:hover,
+    &.#{$class}:active,
+    &.#{$class}.active {
+      color: $variable;
+
+      > svg path {
+        fill: $variable;
+      }
+    }
+  }
+}

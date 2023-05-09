@@ -1,0 +1,35 @@
+@import 'src/styles/app';
+
+.sideBar {
+  width: 15rem;
+  height: 100%;
+  background-color: $neutral-2;
+  padding: 1.5rem 1.25rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 2.5rem;
+
+  position: relative;
+
+  &::after {
+    pointer-events: none;
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-right: 0.5px solid $primary-light;
+  }
+
+  .categoryList,
+  .settings {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .categoryList {
+    flex-grow: 1;
+    overflow: scroll;
+  }
+}

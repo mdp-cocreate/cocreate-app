@@ -1,0 +1,35 @@
+@import 'src/styles/app';
+
+.button {
+  @include reset-button;
+  @include text-no-wrap;
+
+  cursor: pointer;
+  text-align: center;
+  padding: 0.75rem 1rem;
+  background-color: $primary;
+  border-radius: 0.25rem;
+
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1em;
+  color: white;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+
+  transition: background-color $transition-duration;
+
+  &:hover {
+    background-color: $primary-dark;
+  }
+
+  &:disabled {
+    pointer-events: none;
+    background-color: $primary-light;
+    color: $neutral-3;
+  }
+}
