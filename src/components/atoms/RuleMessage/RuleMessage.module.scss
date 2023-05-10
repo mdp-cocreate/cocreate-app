@@ -1,0 +1,38 @@
+@import 'src/styles/app';
+
+.ruleMessage {
+  display: flex;
+  align-items: center;
+  gap: .625rem;
+
+  color: $success;
+
+  .iconContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    path {
+      fill: $success;
+      transition: fill $transition-duration;
+    }
+  }
+
+  transition: color $transition-duration;
+
+  &.error {
+    color: $alert;
+
+    .iconContainer path {
+      fill: $alert;
+    }
+  }
+
+  &.inactive {
+    color: $neutral-3;
+
+    .iconContainer path {
+      fill: $neutral-3;
+    }
+  }
+}

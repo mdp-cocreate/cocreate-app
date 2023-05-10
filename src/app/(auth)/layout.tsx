@@ -1,6 +1,6 @@
 import { redirect } from 'next/navigation';
 
-import { getToken } from '../(dashboard)/layout';
+import { getTokenServerSide } from '@/utils/getTokenServerSide';
 
 import { authServices } from '@/services/authServices';
 
@@ -11,7 +11,7 @@ export default async function AuthLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const token = await getToken();
+  const token = await getTokenServerSide();
   if (token && (await authServices.isAuthenticated(token))) redirect('/');
 
   return <AuthSkeleton>{children}</AuthSkeleton>;

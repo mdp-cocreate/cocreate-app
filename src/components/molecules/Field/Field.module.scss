@@ -1,0 +1,9 @@
+@import 'src/styles/app';
+
+.field {
+  .label {
+    display: inline-block;
+    color: $neutral;
+    padding-bottom: .5rem;
+  }
+}

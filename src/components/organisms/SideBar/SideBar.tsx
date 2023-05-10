@@ -7,6 +7,7 @@ import styles from './SideBar.module.scss';
 import { getHrefByDomain } from '@/utils/getHrefByDomain';
 import { getIconByDomain } from '@/utils/getIconByDomain';
 import { getLabelByDomain } from '@/utils/getLabelByDomain';
+import { manageToken } from '@/utils/manageToken';
 
 import { LogoutIcon } from '@/components/atoms/icons/LogoutIcon/LogoutIcon';
 import { SettingsIcon } from '@/components/atoms/icons/SettingsIcon/SettingsIcon';
@@ -22,8 +23,8 @@ export const SideBar = ({ domains }: Props) => {
   const router = useRouter();
 
   const logout = () => {
-    // TODO manageToken.remove();
-    router.push('/login');
+    manageToken.remove();
+    router.refresh();
   };
 
   return (
