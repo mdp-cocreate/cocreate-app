@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/mdp-cocreate/cocreate-app#readme",
   "dependencies": {
+    "js-cookie": "^3.0.5",
     "next": "^13.4.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -31,6 +32,7 @@
   },
   "devDependencies": {
     "@trivago/prettier-plugin-sort-imports": "^4.1.1",
+    "@types/js-cookie": "^3.0.3",
     "@types/node": "20.1.1",
     "@types/react": "^18.2.6",
     "@types/react-dom": "^18.2.4",

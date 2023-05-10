@@ -52,7 +52,7 @@ export const SideBarLink = ({
 
   return (
     <Link
-      href={href || ''}
+      href={href}
       className={`${styles.sideBarLink} ${
         isLinkActive(pathname, href) ? styles.active : ''
       } ${disabled ? styles.disabled : ''} ${getColorByCategory()}`}

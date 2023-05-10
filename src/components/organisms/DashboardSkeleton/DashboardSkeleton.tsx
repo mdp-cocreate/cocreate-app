@@ -5,7 +5,16 @@ import styles from './DashboardSkeleton.module.scss';
 import { SideBar } from '@/components/organisms/SideBar/SideBar';
 import { TopBar } from '@/components/organisms/TopBar/TopBar';
 
-export const DashboardSkeleton = ({ children }: PropsWithChildren) => {
+import { DomainModel } from '@/models/AppModels';
+
+interface Props {
+  domains: DomainModel[];
+}
+
+export const DashboardSkeleton = ({
+  children,
+  domains,
+}: PropsWithChildren<Props>) => {
   return (
     <div className={styles.dashboardSkeleton}>
       <header className={styles.header}>
@@ -13,7 +22,7 @@ export const DashboardSkeleton = ({ children }: PropsWithChildren) => {
       </header>
       <div className={styles.body}>
         <aside className={styles.aside}>
-          <SideBar />
+          <SideBar domains={domains} />
         </aside>
         <main className={styles.page}>{children}</main>
       </div>

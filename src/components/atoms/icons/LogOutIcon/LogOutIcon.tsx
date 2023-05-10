@@ -1,4 +1,4 @@
-export const LogOutIcon: React.FC<React.SVGProps<SVGSVGElement>> = () => (
+export const LogoutIcon: React.FC<React.SVGProps<SVGSVGElement>> = () => (
   <svg
     width="24"
     height="24"

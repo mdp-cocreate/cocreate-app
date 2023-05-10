@@ -3,7 +3,7 @@
   "semi": true,
   "useTabs": false,
   "tabWidth": 2,
-  "importOrder": ["react", "<THIRD_PARTY_MODULES>", "^[./]", "^@/constants/(.*)$", "^@/utils/(.*)$",  "^@/components/(.*)$",  "^@/models/(.*)$", "^@/(.*)$"],
+  "importOrder": ["^[react|next]", "<THIRD_PARTY_MODULES>", "^[./]", "^@/constants/(.*)$", "^@/utils/(.*)$", "^@/services/(.*)$", "^@/components/(.*)$",  "^@/models/(.*)$", "^@/styles/(.*)$", "^@/(.*)$"],
   "importOrderSeparation": true,
   "importOrderSortSpecifiers": true
 }
