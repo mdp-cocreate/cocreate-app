@@ -1,4 +1,4 @@
-import { Domain } from '@/models/AppModels';
+import { Domain } from '@/models/appModels';
 
 export const getLabelByDomain = (domain: Domain): string => {
   switch (domain) {

@@ -12,7 +12,7 @@ import { authServices } from '@/services/authServices';
 import { Button } from '@/components/atoms/Button/Button';
 import { TextField } from '@/components/molecules/Field/TextField/TextField';
 
-import { LoginDto } from '@/models/AuthModels';
+import { LoginDto } from '@/models/authModels';
 
 export const LoginForm = () => {
   const router = useRouter();

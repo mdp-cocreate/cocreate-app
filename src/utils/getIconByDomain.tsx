@@ -6,7 +6,7 @@ import { DevicesIcon } from '@/components/atoms/icons/DevicesIcon/DevicesIcon';
 import { LockIcon } from '@/components/atoms/icons/LockIcon/LockIcon';
 import { PaintIcon } from '@/components/atoms/icons/PaintIcon/PaintIcon';
 
-import { Domain } from '@/models/AppModels';
+import { Domain } from '@/models/appModels';
 
 export const getIconByDomain = (
   domain: Domain

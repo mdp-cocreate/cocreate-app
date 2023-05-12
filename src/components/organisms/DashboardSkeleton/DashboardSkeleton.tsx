@@ -5,7 +5,7 @@ import styles from './DashboardSkeleton.module.scss';
 import { SideBar } from '@/components/organisms/SideBar/SideBar';
 import { TopBar } from '@/components/organisms/TopBar/TopBar';
 
-import { DomainModel } from '@/models/AppModels';
+import { DomainModel } from '@/models/appModels';
 
 interface Props {
   domains: DomainModel[];

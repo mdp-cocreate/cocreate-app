@@ -12,3 +12,9 @@ export enum Domain {
   DATA = 'DATA',
   AUDIOVISUAL = 'AUDIOVISUAL',
 }
+
+export enum Role {
+  OWNER = 'OWNER',
+  EDITOR = 'EDITOR',
+  READER = 'READER',
+}

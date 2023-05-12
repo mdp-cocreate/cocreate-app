@@ -1,4 +1,4 @@
-import { DomainModel } from '@/models/AppModels';
+import { DomainModel } from '@/models/appModels';
 
 export const appServices = {
   async getDomains(): Promise<{

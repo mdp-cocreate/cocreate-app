@@ -13,7 +13,7 @@ import { LogoutIcon } from '@/components/atoms/icons/LogoutIcon/LogoutIcon';
 import { SettingsIcon } from '@/components/atoms/icons/SettingsIcon/SettingsIcon';
 import { SideBarLink } from '@/components/molecules/SideBarLink/SideBarLink';
 
-import { DomainModel } from '@/models/AppModels';
+import { DomainModel } from '@/models/appModels';
 
 interface Props {
   domains: DomainModel[];

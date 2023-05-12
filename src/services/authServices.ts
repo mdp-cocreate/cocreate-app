@@ -1,4 +1,4 @@
-import { LoginDto } from '@/models/AuthModels';
+import { LoginDto } from '@/models/authModels';
 
 export const authServices = {
   async isAuthenticated(token: string): Promise<boolean> {

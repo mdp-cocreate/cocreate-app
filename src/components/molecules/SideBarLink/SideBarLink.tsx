@@ -1,13 +1,12 @@
-import { PropsWithChildren } from 'react';
-
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { PropsWithChildren } from 'react';
 
 import styles from './SideBarLink.module.scss';
 
 import { isLinkActive } from '@/utils/isLinkActive';
 
-import { Domain } from '@/models/AppModels';
+import { Domain } from '@/models/appModels';
 
 interface Props {
   icon: React.SVGProps<SVGSVGElement>;
