@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { redirect } from 'next/navigation';
 
 import styles from './page.module.scss';
 
@@ -24,8 +25,9 @@ async function getProjectPreviewsThatMatchTheUsersDomains() {
       token || ''
     );
 
+  if (response.status === 401) redirect('/login');
   if (response.status === 200 && response.data) return response.data.previews;
-  else throw new Error('Failed to fetch project previews');
+  else throw new Error('Failed to fetch projects previews');
 }
 
 export default async function Dashboard() {
