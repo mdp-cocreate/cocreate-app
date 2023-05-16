@@ -67,8 +67,19 @@ export const TopBar = () => {
         </li>
         {currentUserSlug ? (
           <li>
-            <Link href={`/users/${currentUserSlug}`}>
-              <IconButton icon={<ProfileIcon />} />
+            <Link
+              href={`/users/${currentUserSlug}`}
+              style={
+                isLinkActive(pathname, `/users/${currentUserSlug}`)
+                  ? { pointerEvents: 'none' }
+                  : undefined
+              }
+            >
+              <IconButton
+                icon={<ProfileIcon />}
+                active={isLinkActive(pathname, `/users/${currentUserSlug}`)}
+                focusable={false}
+              />
             </Link>
           </li>
         ) : null}
