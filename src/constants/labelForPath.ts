@@ -6,4 +6,5 @@ interface LabelForPath {
 export const labelForPath: LabelForPath[] = [
   { path: 'projects', label: 'Projets' },
   { path: 'users', label: 'Utilisateurs' },
+  { path: 'settings', label: 'Paramètres' },
 ];

@@ -1,0 +1,36 @@
+@import 'src/styles/app';
+
+.userInformations {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  ul {
+    list-style: none;
+    max-width: 100%;
+
+    .items {
+      padding: 1rem 0 1.5rem 0;
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      flex-wrap: nowrap;
+      overflow: auto;
+    }
+  }
+
+
+  .contextInformations {
+    > li {
+      display: flex;
+      align-items: center;
+      gap: .625rem;
+      line-height: 1em;
+      color: $neutral-3;
+
+      svg path {
+        fill: $neutral-3;
+      }
+    }
+  }
+}

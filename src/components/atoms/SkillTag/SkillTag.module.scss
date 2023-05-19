@@ -1,0 +1,10 @@
+@import 'src/styles/app';
+
+.skillTag {
+  padding: 0.5rem 1rem;
+  background-color: $primary-light;
+  border-radius: .25rem;
+  color: $primary;
+
+  text-transform: capitalize;
+}
