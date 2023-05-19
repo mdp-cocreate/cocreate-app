@@ -41,7 +41,7 @@ export const ProjectPreviewsThatTheUserOwnsSection = ({ userId }: Props) => {
   ) : (
     <>
       <p className={styles.notFoundParagraph}>Vous ne possédez aucun projet</p>
-      <Button>Émettre mon premier projet</Button>
+      <Button>Créer mon premier projet</Button>
     </>
   );
 

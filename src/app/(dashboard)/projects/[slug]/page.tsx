@@ -14,7 +14,7 @@ async function getProjectMetadata(slug: string) {
 
   if (response.status === 404) notFound();
   if (response.status === 200 && response.data) return response.data;
-  else throw new Error('Failed to generate project metadata');
+  else throw new Error('Failed to fetch project metadata');
 }
 
 export async function generateMetadata({ params }: Params): Promise<Metadata> {

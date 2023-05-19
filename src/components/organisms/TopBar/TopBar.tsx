@@ -89,7 +89,7 @@ export const TopBar = () => {
       </div>
       <ul className={styles.callToActionContainer}>
         <li>
-          <Button>Émettre un projet</Button>
+          <Button>Créer un projet</Button>
         </li>
         <li>
           <IconButton icon={<HelpIcon />} />
