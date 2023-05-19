@@ -47,7 +47,6 @@ export const ProjectPreviewCard = ({ projectPreview }: Props) => {
       <Link href={`/projects/${slug}`}>
         <div className={styles.coverImageContainer}>
           {/* TODO Revoir image */}
-          {/* TODO Add sizes props */}
           <Image
             className={styles.image}
             src={coverImage || '/defaultImg.png'}

@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 
 import { ProjectPreviewsSection } from '../ProjectPreviewsSection';
@@ -48,7 +49,9 @@ export const ProjectPreviewsOfWhichTheUserIsAMemberSection = ({
       <p className={styles.notFoundParagraph}>
         Vous ne participez à aucun projet
       </p>
-      <Button>Chercher un projet</Button>
+      <Link href="/search">
+        <Button focusable={false}>Chercher un projet</Button>
+      </Link>
     </>
   );
 
