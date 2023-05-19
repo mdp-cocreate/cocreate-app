@@ -67,3 +67,9 @@ export enum Role {
   EDITOR = 'EDITOR',
   READER = 'READER',
 }
+
+export type ActionModel = {
+  id: number;
+  name: string;
+  createdAt: Date;
+};

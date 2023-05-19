@@ -9,6 +9,7 @@ import { userServices } from '@/services/userServices';
 
 import { ProjectPreviewsOfWhichTheUserIsAMemberSection } from '@/components/organisms/ProjectPreviewsSection/ProjectPreviewsOfWhichTheUserIsAMemberSection/ProjectPreviewsOfWhichTheUserIsAMemberSection';
 import { ProjectPreviewsThatTheUserOwnsSection } from '@/components/organisms/ProjectPreviewsSection/ProjectPreviewsThatTheUserOwnsSection/ProjectPreviewsThatTheUserOwnsSection';
+import { UserProfileDisplay } from '@/components/organisms/UserProfileDisplay/UserProfileDisplay';
 
 interface Params {
   params: { slug: string };
@@ -49,9 +50,12 @@ export default async function User({ params }: Params) {
 
   return (
     <div className={styles.userPage}>
-      <h1>
-        {user.firstName} {isItTheUserHimself && 'My profile'}
-      </h1>
+      <div className={styles.head}>
+        <UserProfileDisplay
+          user={user}
+          isItTheUserHimself={isItTheUserHimself}
+        />
+      </div>
       <div className={styles.body}>
         <section className={styles.section}>
           <ProjectPreviewsThatTheUserOwnsSection
