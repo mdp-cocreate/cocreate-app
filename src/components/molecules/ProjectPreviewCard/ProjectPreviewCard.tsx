@@ -11,9 +11,10 @@ import { ProjectPreview } from '@/models/projectModels';
 
 interface Props {
   projectPreview: ProjectPreview;
+  fill?: boolean;
 }
 
-export const ProjectPreviewCard = ({ projectPreview }: Props) => {
+export const ProjectPreviewCard = ({ projectPreview, fill = false }: Props) => {
   const { slug, coverImage, name, shortDescription, createdAt, members } =
     projectPreview;
 
@@ -43,7 +44,7 @@ export const ProjectPreviewCard = ({ projectPreview }: Props) => {
   };
 
   return (
-    <div className={styles.projectPreviewCard}>
+    <div className={`${styles.projectPreviewCard} ${fill ? styles.fill : ''}`}>
       <Link href={`/projects/${slug}`}>
         <div className={styles.coverImageContainer}>
           {/* TODO Revoir image */}

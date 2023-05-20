@@ -2,6 +2,8 @@
 
 import { useEffect } from 'react';
 
+import { Button } from '@/components/atoms/Button/Button';
+
 export default function Error({
   error,
   reset,
@@ -17,7 +19,7 @@ export default function Error({
   return (
     <div>
       <h2>Something went wrong! {error.message}</h2>
-      <button onClick={() => reset()}>Try again</button>
+      <Button onClick={() => reset()}>Try again</Button>
     </div>
   );
 }

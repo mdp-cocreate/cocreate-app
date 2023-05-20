@@ -1,10 +1,8 @@
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { useSearchParams } from 'next/navigation';
 import { PropsWithChildren } from 'react';
 
 import styles from './SideBarLink.module.scss';
-
-import { isLinkActive } from '@/utils/isLinkActive';
 
 import { Domain } from '@/models/appModels';
 
@@ -24,7 +22,7 @@ export const SideBarLink = ({
   children,
   onClick,
 }: PropsWithChildren<Props>) => {
-  const pathname = usePathname();
+  const searchParams = useSearchParams();
 
   const getColorByCategory = () => {
     switch (category) {
@@ -53,7 +51,9 @@ export const SideBarLink = ({
     <Link
       href={href}
       className={`${styles.sideBarLink} ${
-        isLinkActive(pathname, href) ? styles.active : ''
+        searchParams.get('domains') === href.split('?domains=')[1]
+          ? styles.active
+          : ''
       } ${disabled ? styles.disabled : ''} ${getColorByCategory()}`}
       onClick={
         onClick

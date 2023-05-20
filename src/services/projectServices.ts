@@ -1,8 +1,16 @@
+import { Domain, Skill } from '@/models/appModels';
 import {
   ProjectMetadata,
   ProjectPreview,
   RetrievedCompleteProject,
 } from '@/models/projectModels';
+
+type SearchedProjectsQueries = {
+  token: string;
+  query?: string;
+  domains?: Domain[];
+  skills?: Skill[];
+};
 
 export const projectServices = {
   async getAllProjectSlugs(): Promise<{
@@ -142,6 +150,76 @@ export const projectServices = {
           return response
             .json()
             .then((data: { metadata: ProjectMetadata }) => ({
+              status: response.status,
+              data,
+            }));
+        return { status: response.status };
+      })
+      .catch(() => ({ status: 500 }));
+  },
+
+  async getSearchedProjectsCount({
+    token,
+    query = '',
+    domains = [],
+    skills = [],
+  }: SearchedProjectsQueries): Promise<{
+    status: number;
+    data?: {
+      count: number;
+    };
+  }> {
+    const domainsToString = domains.join(',');
+    const skillsToString = skills.join(',');
+
+    return fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/projects/search-count?query=${query}&domains=${domainsToString}&skills=${skillsToString}`,
+      {
+        method: 'GET',
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
+      }
+    )
+      .then((response) => {
+        if (response.ok)
+          return response.json().then((data: { count: number }) => ({
+            status: response.status,
+            data,
+          }));
+        return { status: response.status };
+      })
+      .catch(() => ({ status: 500 }));
+  },
+
+  async getSearchedProjects({
+    token,
+    query = '',
+    domains = [],
+    skills = [],
+  }: SearchedProjectsQueries): Promise<{
+    status: number;
+    data?: {
+      projects: ProjectPreview[];
+    };
+  }> {
+    const domainsToString = domains.join(',');
+    const skillsToString = skills.join(',');
+
+    return fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/projects/search?query=${query}&domains=${domainsToString}&skills=${skillsToString}`,
+      {
+        method: 'GET',
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
+      }
+    )
+      .then((response) => {
+        if (response.ok)
+          return response
+            .json()
+            .then((data: { projects: ProjectPreview[] }) => ({
               status: response.status,
               data,
             }));
