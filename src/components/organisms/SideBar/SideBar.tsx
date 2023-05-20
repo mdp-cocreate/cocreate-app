@@ -4,7 +4,6 @@ import { useRouter } from 'next/navigation';
 
 import styles from './SideBar.module.scss';
 
-import { getHrefByDomain } from '@/utils/getHrefByDomain';
 import { getIconByDomain } from '@/utils/getIconByDomain';
 import { getLabelByDomain } from '@/utils/getLabelByDomain';
 import { manageToken } from '@/utils/manageToken';
@@ -32,7 +31,7 @@ export const SideBar = ({ domains }: Props) => {
       <ul className={styles.categoryList}>
         {domains.map(({ id, name }) => (
           <SideBarLink
-            href={getHrefByDomain(name)}
+            href={`/search?domains=${name.toLowerCase()}`}
             icon={getIconByDomain(name)}
             category={name}
             key={id}

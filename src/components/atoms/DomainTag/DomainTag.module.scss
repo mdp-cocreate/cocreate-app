@@ -1,6 +1,7 @@
 @import 'src/styles/app';
 
 .domainTag {
+  @include text-no-wrap;
   padding: 0.5rem 1rem;
   background-color: $primary-light;
   border-radius: .25rem;

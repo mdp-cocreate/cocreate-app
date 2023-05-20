@@ -7,6 +7,11 @@
   overflow: hidden;
   background-color: $neutral-2-bis;
 
+  &.fill {
+    width: 100%;
+    min-width: auto;
+  }
+
   .coverImageContainer {
     width: 100%;
     height: 11.5rem;
