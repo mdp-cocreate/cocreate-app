@@ -8,6 +8,7 @@ interface Props {
   disabled?: boolean;
   isLoading?: boolean;
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
+  block?: boolean;
   focusable?: boolean;
 }
 
@@ -18,6 +19,7 @@ export const Button = ({
   isLoading,
   onClick,
   children,
+  block = false,
   focusable = true,
 }: PropsWithChildren<Props>) => {
   const getColor = (): string => {
@@ -33,7 +35,7 @@ export const Button = ({
     <button
       className={`${styles.button} ${getColor()} ${
         isLoading ? styles.loading : ''
-      }`}
+      } ${block ? styles.block : ''}`}
       type={type}
       disabled={disabled || isLoading}
       onClick={onClick}

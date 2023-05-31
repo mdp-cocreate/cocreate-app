@@ -1,0 +1,41 @@
+.registerForm {
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .firstPart {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .secondPart {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+    .domainsCheckboxes {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+  }
+
+  .thirdPart {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+    .skillsCheckboxes {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+  }
+
+  .errorMessage {
+    margin-top: 2rem;
+  }
+}

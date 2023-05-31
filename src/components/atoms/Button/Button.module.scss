@@ -42,4 +42,9 @@
       color: $primary-light;
     }
   }
+
+  &.block {
+    display: block;
+    width: 100%;
+  }
 }

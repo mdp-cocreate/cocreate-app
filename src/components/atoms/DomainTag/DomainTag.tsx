@@ -11,7 +11,7 @@ type Props = {
 };
 
 export const DomainTag = ({ domain }: Props) => {
-  const getColorByCategory = () => {
+  const getColorByDomain = () => {
     switch (domain) {
       case Domain.UXUI_DESIGN:
         return styles.uiuxDesign;
@@ -33,7 +33,7 @@ export const DomainTag = ({ domain }: Props) => {
   };
 
   return (
-    <div className={`${styles.domainTag} ${getColorByCategory()}`}>
+    <div className={`${styles.domainTag} ${getColorByDomain()}`}>
       {getLabelByDomain(domain)}
     </div>
   );
