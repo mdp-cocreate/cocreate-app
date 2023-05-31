@@ -1,4 +1,4 @@
-import { LoginDto, RegisterDto } from '@/models/authModels';
+import { LoginDto, RegisterDto, ValidateEmailDto } from '@/models/authModels';
 
 export const authServices = {
   async isAuthenticated(token: string): Promise<boolean> {
@@ -40,6 +40,20 @@ export const authServices = {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(registerDto),
+    })
+      .then((response) => ({ status: response.status }))
+      .catch(() => ({ status: 500 }));
+  },
+
+  async validateEmail(
+    validateEmailDto: ValidateEmailDto
+  ): Promise<{ status: number }> {
+    return fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/validate-email`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(validateEmailDto),
     })
       .then((response) => ({ status: response.status }))
       .catch(() => ({ status: 500 }));

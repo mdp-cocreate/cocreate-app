@@ -13,3 +13,8 @@ export interface RegisterDto {
   profilePicture?: Buffer;
   skills: Skill[];
 }
+
+export interface ValidateEmailDto {
+  email: string;
+  token: string;
+}
