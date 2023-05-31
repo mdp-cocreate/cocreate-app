@@ -1,4 +1,9 @@
-import { LoginDto, RegisterDto, ValidateEmailDto } from '@/models/authModels';
+import {
+  LoginDto,
+  RegisterDto,
+  ResetPasswordDto,
+  ValidateEmailDto,
+} from '@/models/authModels';
 
 export const authServices = {
   async isAuthenticated(token: string): Promise<boolean> {
@@ -70,6 +75,20 @@ export const authServices = {
         body: JSON.stringify({ email }),
       }
     )
+      .then((response) => ({ status: response.status }))
+      .catch(() => ({ status: 500 }));
+  },
+
+  async resetPassword(
+    resetPasswordDto: ResetPasswordDto
+  ): Promise<{ status: number }> {
+    return fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/reset-password`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(resetPasswordDto),
+    })
       .then((response) => ({ status: response.status }))
       .catch(() => ({ status: 500 }));
   },

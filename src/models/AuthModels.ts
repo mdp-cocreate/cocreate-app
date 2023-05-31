@@ -18,3 +18,9 @@ export interface ValidateEmailDto {
   email: string;
   token: string;
 }
+
+export interface ResetPasswordDto {
+  email: string;
+  token: string;
+  newPassword: string;
+}
