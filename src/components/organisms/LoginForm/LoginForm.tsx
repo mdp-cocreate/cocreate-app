@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { FormEvent, ReactNode, useState } from 'react';
 
@@ -45,16 +46,20 @@ export const LoginForm = () => {
     <form className={styles.loginForm} onSubmit={handleSubmit}>
       <TextField
         label="Email"
+        defaultValue={loginFormData.email}
         onValueChange={(emailValue) =>
           setLoginFormData({ ...loginFormData, email: emailValue.trim() })
         }
       />
       <TextField
         label="Mot de passe"
+        type="password"
+        defaultValue={loginFormData.password}
         onValueChange={(passwordValue) =>
           setLoginFormData({ ...loginFormData, password: passwordValue })
         }
       />
+      <Link href="/forgot-password">Mot de passe oublié ?</Link>
       <Button type="submit" disabled={isLoading}>
         Se connecter
       </Button>

@@ -58,4 +58,19 @@ export const authServices = {
       .then((response) => ({ status: response.status }))
       .catch(() => ({ status: 500 }));
   },
+
+  async sendResetPasswordEmail(email: string): Promise<{ status: number }> {
+    return fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/auth/send-reset-password-email`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email }),
+      }
+    )
+      .then((response) => ({ status: response.status }))
+      .catch(() => ({ status: 500 }));
+  },
 };

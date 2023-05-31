@@ -19,7 +19,7 @@ interface Rule {
 interface Props {
   label?: string;
   placeholder?: string;
-  type?: 'text' | 'email' | 'tel' | 'url';
+  type?: 'text' | 'email' | 'tel' | 'url' | 'password';
   minLength?: number;
   maxLength?: number;
   rules?: Rule[];
