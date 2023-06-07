@@ -9,7 +9,8 @@ type Props = {
 };
 
 export const SkillTag = ({ skill }: Props) => {
-  const getLabelBySkill = (): string => skill.replace('_', ' ').toLowerCase();
+  const getLabelBySkill = (): string =>
+    skill.replaceAll('_', ' ').toLowerCase();
 
   return <div className={styles.skillTag}>{getLabelBySkill()}</div>;
 };

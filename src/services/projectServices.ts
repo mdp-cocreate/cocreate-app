@@ -1,5 +1,7 @@
 import { Domain, Skill } from '@/models/appModels';
 import {
+  CreateProjectDto,
+  Project,
   ProjectMetadata,
   ProjectPreview,
   RetrievedCompleteProject,
@@ -223,6 +225,34 @@ export const projectServices = {
               status: response.status,
               data,
             }));
+        return { status: response.status };
+      })
+      .catch(() => ({ status: 500 }));
+  },
+
+  async createProject(
+    token: string,
+    createProjectDto: CreateProjectDto
+  ): Promise<{
+    status: number;
+    data?: {
+      project: Project;
+    };
+  }> {
+    return fetch(`${process.env.NEXT_PUBLIC_API_URL}/projects`, {
+      method: 'POST',
+      headers: {
+        authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(createProjectDto),
+    })
+      .then((response) => {
+        if (response.ok)
+          return response.json().then((data: { project: Project }) => ({
+            status: response.status,
+            data,
+          }));
         return { status: response.status };
       })
       .catch(() => ({ status: 500 }));

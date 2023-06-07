@@ -48,7 +48,7 @@ export const ProjectMembersPreview = ({ membersPreview }: Props) => {
                 mouseEnterDelay={0.3}
               >
                 <Image
-                  src={member.user.profilePicture || '/defaultAvatar.png'}
+                  src={member.user.profilePicture || '/authIllustration.png'}
                   alt={`Photo de profil`}
                   fill
                   style={{ objectFit: 'cover' }}

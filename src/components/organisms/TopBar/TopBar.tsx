@@ -20,7 +20,11 @@ import { NotificationsIcon } from '@/components/atoms/icons/NotificationsIcon/No
 import { ProfileIcon } from '@/components/atoms/icons/ProfileIcon/ProfileIcon';
 import { Breadcrumb } from '@/components/molecules/Breadcrumb/Breadcrumb';
 
-export const TopBar = () => {
+interface Props {
+  setIsCreateProjectDrawerOpened: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+export const TopBar = ({ setIsCreateProjectDrawerOpened }: Props) => {
   const router = useRouter();
   const pathname = usePathname();
 
@@ -62,9 +66,9 @@ export const TopBar = () => {
             />
           </Link>
         </li>
-        <li>
+        {/* <li>
           <IconButton icon={<NotificationsIcon />} />
-        </li>
+        </li> */}
         {currentUserSlug ? (
           <li>
             <Link
@@ -89,11 +93,13 @@ export const TopBar = () => {
       </div>
       <ul className={styles.callToActionContainer}>
         <li>
-          <Button>Créer un projet</Button>
+          <Button onClick={() => setIsCreateProjectDrawerOpened(true)}>
+            Créer un projet
+          </Button>
         </li>
-        <li>
+        {/* <li>
           <IconButton icon={<HelpIcon />} />
-        </li>
+        </li> */}
       </ul>
     </nav>
   );

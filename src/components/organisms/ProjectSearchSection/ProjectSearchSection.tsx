@@ -5,13 +5,13 @@ import React, { useEffect, useState } from 'react';
 
 import styles from './ProjectSearchSection.module.scss';
 
-import { getLabelByDomain } from '@/utils/getLabelByDomain';
 import { manageToken } from '@/utils/manageToken';
 
 import { appServices } from '@/services/appServices';
 import { projectServices } from '@/services/projectServices';
 
 import { Button } from '@/components/atoms/Button/Button';
+import { TextualCheckbox } from '@/components/atoms/TextualCheckbox/TextualCheckbox';
 import { TextField } from '@/components/molecules/Field/TextField/TextField';
 
 import { Domain, DomainModel } from '@/models/appModels';
@@ -137,15 +137,10 @@ export const ProjectSearchSection = ({
         <ul className={styles.domainsCheckboxes}>
           {domains.map((domain) => (
             <li key={domain.id}>
-              <input
-                type="checkbox"
-                id={domain.name}
-                checked={selectedDomains.some(
-                  (selectedDomain) => selectedDomain === domain.name
-                )}
-                onChange={(e) => {
-                  const isChecked = e.target.checked;
-                  if (isChecked)
+              <TextualCheckbox
+                domain={domain.name}
+                onChange={(checked) => {
+                  if (checked)
                     setSelectedDomains([...selectedDomains, domain.name]);
                   else
                     setSelectedDomains(
@@ -155,9 +150,6 @@ export const ProjectSearchSection = ({
                     );
                 }}
               />
-              <label htmlFor={domain.name}>
-                {getLabelByDomain(domain.name)}
-              </label>
             </li>
           ))}
         </ul>

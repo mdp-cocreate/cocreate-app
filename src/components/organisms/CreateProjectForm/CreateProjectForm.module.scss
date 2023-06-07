@@ -1,0 +1,54 @@
+@import 'src/styles/app';
+
+.createProjectForm {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  .stepsIndicator {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .step {
+      cursor: pointer;
+
+      width: 2rem;
+      height: 2rem;
+      border-radius: 50%;
+      line-height: 1em;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      background-color: $primary-light;
+
+      transition: $transition-duration;
+
+      &.active {
+        background-color: $primary;
+        color: white;
+      }
+    }
+  }
+
+  .form {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+    .checkboxesContainer {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: .5rem;
+  }
+}

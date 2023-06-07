@@ -9,8 +9,6 @@ import { manageToken } from '@/utils/manageToken';
 
 import { projectServices } from '@/services/projectServices';
 
-import { Button } from '@/components/atoms/Button/Button';
-
 import { ProjectPreview } from '@/models/projectModels';
 
 interface Props {
@@ -41,7 +39,6 @@ export const ProjectPreviewsThatTheUserOwnsSection = ({ userId }: Props) => {
   ) : (
     <>
       <p className={styles.notFoundParagraph}>Vous ne possédez aucun projet</p>
-      <Button>Créer mon premier projet</Button>
     </>
   );
 

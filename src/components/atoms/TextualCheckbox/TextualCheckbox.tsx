@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
+import { v4 as uuid } from 'uuid';
+
 import styles from './TextualCheckbox.module.scss';
 
 import { capitalize } from '@/utils/capitalize';
@@ -10,11 +12,17 @@ import { Domain } from '@/models/appModels';
 interface Props {
   domain?: Domain;
   label?: string;
+  defaultChecked?: boolean;
   onChange: (checked: boolean) => void;
 }
 
-export const TextualCheckbox = ({ domain, label, onChange }: Props) => {
-  const [checked, setChecked] = useState(false);
+export const TextualCheckbox = ({
+  domain,
+  label,
+  defaultChecked = false,
+  onChange,
+}: Props) => {
+  const [checked, setChecked] = useState(defaultChecked);
 
   const getColorByDomain = () => {
     switch (domain) {
@@ -41,23 +49,25 @@ export const TextualCheckbox = ({ domain, label, onChange }: Props) => {
     onChange(checked);
   }, [checked]);
 
+  const id = uuid();
+
   return (
     <div className={styles.textualCheckbox}>
       <input
         type="checkbox"
-        id={domain || label}
+        id={id}
         className={styles.input}
         checked={checked}
         onChange={() => setChecked(!checked)}
       />
       <label
-        htmlFor={domain || label}
+        htmlFor={id}
         className={`${styles.label} ${domain ? getColorByDomain() : ''}`}
       >
         {domain
           ? getLabelByDomain(domain)
           : label
-          ? capitalize(label?.replace('_', ' ').toLowerCase())
+          ? capitalize(label?.replaceAll('_', ' ').toLowerCase())
           : ''}
       </label>
     </div>

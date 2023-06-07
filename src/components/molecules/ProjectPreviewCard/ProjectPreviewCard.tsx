@@ -47,10 +47,9 @@ export const ProjectPreviewCard = ({ projectPreview, fill = false }: Props) => {
     <div className={`${styles.projectPreviewCard} ${fill ? styles.fill : ''}`}>
       <Link href={`/projects/${slug}`}>
         <div className={styles.coverImageContainer}>
-          {/* TODO Revoir image */}
           <Image
             className={styles.image}
-            src={coverImage || '/defaultImg.png'}
+            src={coverImage || '/authIllustration.png'}
             alt={`${projectPreview.name} project's cover image`}
             fill
             style={{ objectFit: 'cover' }}

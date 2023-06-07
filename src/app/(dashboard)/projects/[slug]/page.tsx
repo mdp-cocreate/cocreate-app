@@ -1,9 +1,16 @@
 import { Metadata } from 'next';
 import { notFound, redirect } from 'next/navigation';
 
+import styles from './page.module.scss';
+
 import { getTokenServerSide } from '@/utils/getTokenServerSide';
 
 import { projectServices } from '@/services/projectServices';
+
+import { Button } from '@/components/atoms/Button/Button';
+import { Section } from '@/components/molecules/Section/Section';
+
+import { Role } from '@/models/appModels';
 
 interface Params {
   params: { slug: string };
@@ -43,9 +50,45 @@ async function getProjectBySlug(slug: string) {
 export default async function Project({ params }: Params) {
   const { project, currentUserRole } = await getProjectBySlug(params.slug);
 
+  const getLabelByRole = (role: Role): string => {
+    switch (role) {
+      case Role.OWNER:
+        return 'Propriétaire';
+      case Role.EDITOR:
+        return 'Éditeur';
+      case Role.READER:
+        return 'Spectateur';
+      default:
+        return 'Spectateur';
+    }
+  };
+
   return (
-    <h1>
-      {project.name} {currentUserRole}
-    </h1>
+    <div className={styles.projectPage}>
+      <div className={styles.head}>
+        <h1 className={styles.title}>{project.name}</h1>
+        <p>{project.shortDescription}</p>
+      </div>
+      <span>
+        {currentUserRole ? (
+          <Button>Demander à rejoindre le groupe</Button>
+        ) : null}
+      </span>
+      <Section title="Description détaillée">
+        <p>{project.description}</p>
+      </Section>
+      <Section title="Membres">
+        <div className={styles.members}>
+          {project.members.map((member) => (
+            <article key={member.user.id} className={styles.member}>
+              <h4>
+                {member.user.firstName} {member.user.lastName}
+              </h4>
+              <span>{getLabelByRole(member.role)}</span>
+            </article>
+          ))}
+        </div>
+      </Section>
+    </div>
   );
 }

@@ -29,9 +29,8 @@ export const UserProfileDisplay = ({
     <div className={styles.userProfileDisplay}>
       <div className={styles.head}>
         <figure className={styles.profilePictureContainer}>
-          {/* handle default pp */}
           <Image
-            src={profilePicture || 'default'}
+            src={profilePicture || '/authIllustration.png'}
             alt={`${fullName}'s profile picture`}
             fill
             style={{ objectFit: 'cover', objectPosition: 'center' }}

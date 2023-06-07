@@ -1,0 +1,25 @@
+.projectPage {
+  padding: 1.5rem 2.5rem;
+
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  .head {
+    .title {
+      margin-bottom: 1rem;
+    }
+  }
+
+  .members {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    .member {
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+    }
+  }
+}

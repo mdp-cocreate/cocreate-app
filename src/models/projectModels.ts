@@ -59,3 +59,12 @@ export interface ProjectMetadata {
   name: string;
   shortDescription: string;
 }
+
+export interface CreateProjectDto {
+  name: string;
+  shortDescription: string;
+  description?: string;
+  coverImage?: Buffer;
+  public?: boolean;
+  skills: Skill[];
+}
