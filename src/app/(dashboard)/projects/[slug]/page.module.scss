@@ -22,4 +22,16 @@
       gap: .5rem;
     }
   }
+
+  .domainsAndSkills {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+  }
 }

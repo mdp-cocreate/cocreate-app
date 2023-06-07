@@ -8,9 +8,11 @@ import { getTokenServerSide } from '@/utils/getTokenServerSide';
 import { projectServices } from '@/services/projectServices';
 
 import { Button } from '@/components/atoms/Button/Button';
+import { DomainTag } from '@/components/atoms/DomainTag/DomainTag';
+import { SkillTag } from '@/components/atoms/SkillTag/SkillTag';
 import { Section } from '@/components/molecules/Section/Section';
 
-import { Role } from '@/models/appModels';
+import { Domain, Role, Skill } from '@/models/appModels';
 
 interface Params {
   params: { slug: string };
@@ -70,10 +72,24 @@ export default async function Project({ params }: Params) {
         <p>{project.shortDescription}</p>
       </div>
       <span>
-        {currentUserRole ? (
+        {!currentUserRole ? (
           <Button>Demander à rejoindre le groupe</Button>
         ) : null}
       </span>
+      <Section title="Domaines et compétences">
+        <div className={styles.domainsAndSkills}>
+          <div className={styles.tags}>
+            <DomainTag domain={Domain.DEVELOPMENT} />
+            <DomainTag domain={Domain.UXUI_DESIGN} />
+          </div>
+          <div className={styles.tags}>
+            <SkillTag skill={Skill.FRONTEND_DEVELOPMENT} />
+            <SkillTag skill={Skill.BACKEND_DEVELOPMENT} />
+            <SkillTag skill={Skill.LAYOUT_DESIGN} />
+            <SkillTag skill={Skill.USER_RESEARCH} />
+          </div>
+        </div>
+      </Section>
       <Section title="Description détaillée">
         <p>{project.description}</p>
       </Section>
