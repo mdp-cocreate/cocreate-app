@@ -257,4 +257,22 @@ export const projectServices = {
       })
       .catch(() => ({ status: 500 }));
   },
+
+  async askToJoinProject(
+    token: string,
+    projectId: number
+  ): Promise<{ status: number }> {
+    return fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/projects/${projectId}/ask-to-join`,
+      {
+        method: 'POST',
+        headers: {
+          authorization: `Bearer ${token}`,
+          'Content-Type': 'application/json',
+        },
+      }
+    )
+      .then((response) => ({ status: response.status }))
+      .catch(() => ({ status: 500 }));
+  },
 };

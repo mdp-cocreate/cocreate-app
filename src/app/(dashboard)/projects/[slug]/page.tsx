@@ -7,9 +7,9 @@ import { getTokenServerSide } from '@/utils/getTokenServerSide';
 
 import { projectServices } from '@/services/projectServices';
 
-import { Button } from '@/components/atoms/Button/Button';
 import { DomainTag } from '@/components/atoms/DomainTag/DomainTag';
 import { SkillTag } from '@/components/atoms/SkillTag/SkillTag';
+import { AskToJoinSection } from '@/components/molecules/AskToJoinSection/AskToJoinSection';
 import { Section } from '@/components/molecules/Section/Section';
 
 import { Domain, Role, Skill } from '@/models/appModels';
@@ -72,9 +72,7 @@ export default async function Project({ params }: Params) {
         <p>{project.shortDescription}</p>
       </div>
       <span>
-        {!currentUserRole ? (
-          <Button>Demander à rejoindre le groupe</Button>
-        ) : null}
+        {!currentUserRole ? <AskToJoinSection projectId={project.id} /> : null}
       </span>
       <Section title="Domaines et compétences">
         <div className={styles.domainsAndSkills}>

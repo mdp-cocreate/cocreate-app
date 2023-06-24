@@ -1,3 +1,5 @@
+@import 'src/styles/app';
+
 .successSection {
   padding: 1.5rem 2.5rem;
 
@@ -25,6 +27,14 @@
 
 .forgotPasswordPage {
   padding: 5rem;
+
+  @include media-breakpoint-down(md) {
+    padding: 2.5rem;
+
+    @include media-breakpoint-down(sm) {
+      padding: 1.5rem;
+    }
+  }
 
   .head {
     margin-bottom: 2.5rem;

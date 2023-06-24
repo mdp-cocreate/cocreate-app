@@ -13,6 +13,7 @@ import { authServices } from '@/services/authServices';
 
 import { Button } from '@/components/atoms/Button/Button';
 import { TextualCheckbox } from '@/components/atoms/TextualCheckbox/TextualCheckbox';
+import { ErrorWidget } from '@/components/molecules/ErrorWidget/ErrorWidget';
 import PasswordField from '@/components/molecules/Field/PasswordField/PasswordField';
 import { TextField } from '@/components/molecules/Field/TextField/TextField';
 
@@ -213,7 +214,7 @@ export const RegisterForm = () => {
           </div>
         </div>
       ) : null}
-      <p className={styles.errorMessage}>{error}</p>
+      {error ? <ErrorWidget>{error}</ErrorWidget> : null}
     </form>
   );
 };

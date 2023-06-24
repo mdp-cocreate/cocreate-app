@@ -14,7 +14,7 @@ import { userServices } from '@/services/userServices';
 
 import { Button } from '@/components/atoms/Button/Button';
 import { IconButton } from '@/components/atoms/IconButton/IconButton';
-import { HelpIcon } from '@/components/atoms/icons/HelpIcon/HelpIcon';
+// import { HelpIcon } from '@/components/atoms/icons/HelpIcon/HelpIcon';
 import { HomeIcon } from '@/components/atoms/icons/HomeIcon/HomeIcon';
 import { NotificationsIcon } from '@/components/atoms/icons/NotificationsIcon/NotificationsIcon';
 import { ProfileIcon } from '@/components/atoms/icons/ProfileIcon/ProfileIcon';
@@ -66,9 +66,9 @@ export const TopBar = ({ setIsCreateProjectDrawerOpened }: Props) => {
             />
           </Link>
         </li>
-        {/* <li>
+        <li>
           <IconButton icon={<NotificationsIcon />} />
-        </li> */}
+        </li>
         {currentUserSlug ? (
           <li>
             <Link

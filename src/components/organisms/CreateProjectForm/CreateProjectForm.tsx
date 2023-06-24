@@ -11,6 +11,7 @@ import { projectServices } from '@/services/projectServices';
 
 import { Button } from '@/components/atoms/Button/Button';
 import { TextualCheckbox } from '@/components/atoms/TextualCheckbox/TextualCheckbox';
+import { ErrorWidget } from '@/components/molecules/ErrorWidget/ErrorWidget';
 import { Field } from '@/components/molecules/Field/Field';
 import { TextField } from '@/components/molecules/Field/TextField/TextField';
 
@@ -107,6 +108,10 @@ const CreateProjectForm = ({ closeDrawer }: Props) => {
       reinitialize();
       closeDrawer();
       return;
+    }
+
+    if (response.status === 409) {
+      return setError(`Ce titre est déjà utilisé par un autre projet.`);
     }
 
     setError(
@@ -263,7 +268,7 @@ const CreateProjectForm = ({ closeDrawer }: Props) => {
         : currentStep === 3
         ? skillsStep
         : null}
-      {error ? <p>{error}</p> : null}
+      {error ? <ErrorWidget>{error}</ErrorWidget> : null}
     </form>
   );
 };

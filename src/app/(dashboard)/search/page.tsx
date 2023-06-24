@@ -20,13 +20,30 @@ import { ProjectPreview } from '@/models/projectModels';
 export default function Search() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const queryParam = searchParams.get('query') || undefined;
-  const domainsParam =
+
+  const [queryParam, setQueryParam] = useState<string | undefined>(
+    searchParams.get('query') || undefined
+  );
+  const [domainsParam, setDomainsParam] = useState<Domain[] | undefined>(
     (searchParams.get('domains')?.toUpperCase().split(',') as Domain[]) ||
-    undefined;
-  const skillsParam =
+      undefined
+  );
+  const [skillsParam, setSkillsParam] = useState<Skill[] | undefined>(
     (searchParams.get('skills')?.toUpperCase().split(',') as Skill[]) ||
-    undefined;
+      undefined
+  );
+
+  useEffect(() => {
+    setQueryParam(searchParams.get('query') || undefined);
+    setDomainsParam(
+      (searchParams.get('domains')?.toUpperCase().split(',') as Domain[]) ||
+        undefined
+    );
+    setSkillsParam(
+      (searchParams.get('skills')?.toUpperCase().split(',') as Skill[]) ||
+        undefined
+    );
+  }, [searchParams]);
 
   const [searchResultsTitle, setSearchResultsTitle] =
     useState('Projets trouvés');
@@ -85,7 +102,7 @@ export default function Search() {
   };
 
   useEffect(() => {
-    if (queryParam || domainsParam.length || skillsParam.length)
+    if (queryParam || domainsParam?.length || skillsParam?.length)
       getQueryParamsSearchedProjects();
   }, [searchParams]);
 

@@ -11,6 +11,7 @@ import { manageToken } from '@/utils/manageToken';
 import { authServices } from '@/services/authServices';
 
 import { Button } from '@/components/atoms/Button/Button';
+import { ErrorWidget } from '@/components/molecules/ErrorWidget/ErrorWidget';
 import { TextField } from '@/components/molecules/Field/TextField/TextField';
 
 import { LoginDto } from '@/models/authModels';
@@ -63,7 +64,7 @@ export const LoginForm = () => {
       <Button type="submit" disabled={isLoading}>
         Se connecter
       </Button>
-      {error ? <span>{error}</span> : null}
+      {error ? <ErrorWidget>{error}</ErrorWidget> : null}
     </form>
   );
 };

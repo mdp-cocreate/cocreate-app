@@ -149,6 +149,9 @@ export const ProjectSearchSection = ({
                       )
                     );
                 }}
+                defaultChecked={selectedDomains.some(
+                  (selectedDomain) => selectedDomain === domain.name
+                )}
               />
             </li>
           ))}
