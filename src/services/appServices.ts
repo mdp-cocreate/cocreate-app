@@ -1,3 +1,5 @@
+import { fetchWithApiKey } from './fetchWithApiKey';
+
 import { Domain, DomainModel, SkillModel } from '@/models/appModels';
 
 export const appServices = {
@@ -5,7 +7,7 @@ export const appServices = {
     status: number;
     data?: { domains: DomainModel[] };
   }> {
-    return fetch(`${process.env.NEXT_PUBLIC_API_URL}/domains`, {
+    return fetchWithApiKey(`${process.env.NEXT_PUBLIC_API_URL}/domains`, {
       method: 'GET',
     })
       .then((response) => {
@@ -23,7 +25,7 @@ export const appServices = {
     status: number;
     data?: { skills: SkillModel[] };
   }> {
-    return fetch(
+    return fetchWithApiKey(
       `${process.env.NEXT_PUBLIC_API_URL}/skills${
         domains.length ? `?domains=${domains.join(',')}` : ''
       }`,

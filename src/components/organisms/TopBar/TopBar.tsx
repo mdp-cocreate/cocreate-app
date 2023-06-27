@@ -1,5 +1,6 @@
 'use client';
 
+import { Badge, Dropdown, Popover } from 'antd';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useRouter } from 'next/navigation';
@@ -10,6 +11,7 @@ import styles from './TopBar.module.scss';
 import { isLinkActive } from '@/utils/isLinkActive';
 import { manageToken } from '@/utils/manageToken';
 
+import { projectServices } from '@/services/projectServices';
 import { userServices } from '@/services/userServices';
 
 import { Button } from '@/components/atoms/Button/Button';
@@ -19,6 +21,9 @@ import { HomeIcon } from '@/components/atoms/icons/HomeIcon/HomeIcon';
 import { NotificationsIcon } from '@/components/atoms/icons/NotificationsIcon/NotificationsIcon';
 import { ProfileIcon } from '@/components/atoms/icons/ProfileIcon/ProfileIcon';
 import { Breadcrumb } from '@/components/molecules/Breadcrumb/Breadcrumb';
+import { JoinRequestsList } from '@/components/molecules/JoinRequestsList/JoinRequestsList';
+
+import { JoinRequest } from '@/models/projectModels';
 
 interface Props {
   setIsCreateProjectDrawerOpened: React.Dispatch<React.SetStateAction<boolean>>;
@@ -29,6 +34,7 @@ export const TopBar = ({ setIsCreateProjectDrawerOpened }: Props) => {
   const pathname = usePathname();
 
   const [currentUserSlug, setCurrentUserSlug] = useState<string | null>(null);
+  const [joinRequests, setJoinRequests] = useState<JoinRequest[] | null>(null);
 
   async function getCurrentUserProfile(token: string) {
     const response = await userServices.getCurrentUserProfile(token);
@@ -45,6 +51,18 @@ export const TopBar = ({ setIsCreateProjectDrawerOpened }: Props) => {
       getCurrentUserProfile(token)
         .then(({ user }) => setCurrentUserSlug(user.slug))
         .catch(() => router.refresh());
+  }, []);
+
+  const getJoinRequests = async () => {
+    const token = manageToken.get();
+    const response = await projectServices.getJoinRequests(token || '');
+
+    if (response.status === 200 && response.data)
+      return setJoinRequests(response.data.joinRequests);
+  };
+
+  useEffect(() => {
+    getJoinRequests();
   }, []);
 
   return (
@@ -66,9 +84,16 @@ export const TopBar = ({ setIsCreateProjectDrawerOpened }: Props) => {
             />
           </Link>
         </li>
-        <li>
-          <IconButton icon={<NotificationsIcon />} />
-        </li>
+        <Popover
+          content={<JoinRequestsList joinRequests={joinRequests || []} />}
+          placement="bottomLeft"
+        >
+          <li>
+            <Badge count={joinRequests?.length}>
+              <IconButton icon={<NotificationsIcon />} />
+            </Badge>
+          </li>
+        </Popover>
         {currentUserSlug ? (
           <li>
             <Link

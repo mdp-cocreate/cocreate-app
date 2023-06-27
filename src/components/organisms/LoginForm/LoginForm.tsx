@@ -40,7 +40,12 @@ export const LoginForm = () => {
     if (response.status === 201 && response.data) {
       manageToken.set(response.data.token);
       router.refresh();
+      return;
     }
+
+    setError(
+      `Une erreur inconnue est survenue (${response.status}). Veuillez contacter le support.`
+    );
   };
 
   return (

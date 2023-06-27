@@ -68,3 +68,16 @@ export interface CreateProjectDto {
   public?: boolean;
   skills: Skill[];
 }
+
+export interface JoinRequest {
+  user: {
+    slug: string;
+    firstName: string;
+    lastName: string;
+  };
+  project: {
+    slug: string;
+    name: string;
+  };
+  createdAt: Date;
+}

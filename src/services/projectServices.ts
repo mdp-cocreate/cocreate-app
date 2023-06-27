@@ -1,6 +1,9 @@
+import { fetchWithApiKey } from './fetchWithApiKey';
+
 import { Domain, Skill } from '@/models/appModels';
 import {
   CreateProjectDto,
+  JoinRequest,
   Project,
   ProjectMetadata,
   ProjectPreview,
@@ -19,7 +22,7 @@ export const projectServices = {
     status: number;
     data?: { slugs: { slug: string }[] };
   }> {
-    return fetch(`${process.env.NEXT_PUBLIC_API_URL}/projects`, {
+    return fetchWithApiKey(`${process.env.NEXT_PUBLIC_API_URL}/projects`, {
       method: 'GET',
     })
       .then((response) => {
@@ -40,7 +43,7 @@ export const projectServices = {
     skip = 0,
     take = 5
   ): Promise<{ status: number; data?: { previews: ProjectPreview[] } }> {
-    return fetch(
+    return fetchWithApiKey(
       `${process.env.NEXT_PUBLIC_API_URL}/projects/similar-domains?skip=${skip}&take=${take}`,
       {
         method: 'GET',
@@ -67,7 +70,7 @@ export const projectServices = {
     skip = 0,
     take = 5
   ): Promise<{ status: number; data?: { previews: ProjectPreview[] } }> {
-    return fetch(
+    return fetchWithApiKey(
       `${process.env.NEXT_PUBLIC_API_URL}/projects/owned?skip=${skip}&take=${take}`,
       {
         method: 'GET',
@@ -94,7 +97,7 @@ export const projectServices = {
     skip = 0,
     take = 5
   ): Promise<{ status: number; data?: { previews: ProjectPreview[] } }> {
-    return fetch(
+    return fetchWithApiKey(
       `${process.env.NEXT_PUBLIC_API_URL}/projects/member?skip=${skip}&take=${take}`,
       {
         method: 'GET',
@@ -120,12 +123,15 @@ export const projectServices = {
     token: string,
     slug: string
   ): Promise<{ status: number; data?: RetrievedCompleteProject }> {
-    return fetch(`${process.env.NEXT_PUBLIC_API_URL}/projects/${slug}`, {
-      method: 'GET',
-      headers: {
-        authorization: `Bearer ${token}`,
-      },
-    })
+    return fetchWithApiKey(
+      `${process.env.NEXT_PUBLIC_API_URL}/projects/${slug}`,
+      {
+        method: 'GET',
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
+      }
+    )
       .then((response) => {
         if (response.ok)
           return response.json().then((data: RetrievedCompleteProject) => ({
@@ -143,7 +149,7 @@ export const projectServices = {
       metadata: ProjectMetadata;
     };
   }> {
-    return fetch(
+    return fetchWithApiKey(
       `${process.env.NEXT_PUBLIC_API_URL}/projects/${slug}/metadata`,
       { method: 'GET' }
     )
@@ -174,7 +180,7 @@ export const projectServices = {
     const domainsToString = domains.join(',');
     const skillsToString = skills.join(',');
 
-    return fetch(
+    return fetchWithApiKey(
       `${process.env.NEXT_PUBLIC_API_URL}/projects/search-count?query=${query}&domains=${domainsToString}&skills=${skillsToString}`,
       {
         method: 'GET',
@@ -208,7 +214,7 @@ export const projectServices = {
     const domainsToString = domains.join(',');
     const skillsToString = skills.join(',');
 
-    return fetch(
+    return fetchWithApiKey(
       `${process.env.NEXT_PUBLIC_API_URL}/projects/search?query=${query}&domains=${domainsToString}&skills=${skillsToString}`,
       {
         method: 'GET',
@@ -239,7 +245,7 @@ export const projectServices = {
       project: Project;
     };
   }> {
-    return fetch(`${process.env.NEXT_PUBLIC_API_URL}/projects`, {
+    return fetchWithApiKey(`${process.env.NEXT_PUBLIC_API_URL}/projects`, {
       method: 'POST',
       headers: {
         authorization: `Bearer ${token}`,
@@ -262,7 +268,7 @@ export const projectServices = {
     token: string,
     projectId: number
   ): Promise<{ status: number }> {
-    return fetch(
+    return fetchWithApiKey(
       `${process.env.NEXT_PUBLIC_API_URL}/projects/${projectId}/ask-to-join`,
       {
         method: 'POST',
@@ -273,6 +279,31 @@ export const projectServices = {
       }
     )
       .then((response) => ({ status: response.status }))
+      .catch(() => ({ status: 500 }));
+  },
+
+  async getJoinRequests(
+    token: string
+  ): Promise<{ status: number; data?: { joinRequests: JoinRequest[] } }> {
+    return fetchWithApiKey(
+      `${process.env.NEXT_PUBLIC_API_URL}/projects/join-requests`,
+      {
+        method: 'GET',
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
+      }
+    )
+      .then((response) => {
+        if (response.ok)
+          return response
+            .json()
+            .then((data: { joinRequests: JoinRequest[] }) => ({
+              status: response.status,
+              data,
+            }));
+        return { status: response.status };
+      })
       .catch(() => ({ status: 500 }));
   },
 };
