@@ -59,8 +59,8 @@ export const ProjectPreviewsOfWhichTheUserIsAMemberSection = ({
     <ProjectPreviewsSection
       title={
         userId
-          ? 'Projets auxquels cet utilisateur participe'
-          : 'Projets auxquels vous participez'
+          ? 'Les projets auxquels cet utilisateur participe'
+          : 'Les projets auxquels vous participez'
       }
       projectPreviews={projectPreviewsOfWhichTheUserIsAMember}
       isLoading={isLoading}

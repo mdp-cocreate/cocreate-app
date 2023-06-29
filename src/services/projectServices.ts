@@ -306,4 +306,24 @@ export const projectServices = {
       })
       .catch(() => ({ status: 500 }));
   },
+
+  async updateProjectBySlug(
+    token: string,
+    slug: string,
+    updateProjectDto: Partial<CreateProjectDto>
+  ) {
+    return fetchWithApiKey(
+      `${process.env.NEXT_PUBLIC_API_URL}/projects/${slug}`,
+      {
+        method: 'PATCH',
+        headers: {
+          authorization: `Bearer ${token}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(updateProjectDto),
+      }
+    )
+      .then((response) => ({ status: response.status }))
+      .catch(() => ({ status: 500 }));
+  },
 };

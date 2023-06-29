@@ -1,18 +1,22 @@
 import { Metadata } from 'next';
+import Image from 'next/image';
+import Link from 'next/link';
 import { notFound, redirect } from 'next/navigation';
 
 import styles from './page.module.scss';
 
+import { getTimeElapsedSinceDate } from '@/utils/getTimeElapsedSinceDate';
 import { getTokenServerSide } from '@/utils/getTokenServerSide';
 
 import { projectServices } from '@/services/projectServices';
 
+import { Button } from '@/components/atoms/Button/Button';
 import { DomainTag } from '@/components/atoms/DomainTag/DomainTag';
 import { SkillTag } from '@/components/atoms/SkillTag/SkillTag';
 import { AskToJoinSection } from '@/components/molecules/AskToJoinSection/AskToJoinSection';
 import { Section } from '@/components/molecules/Section/Section';
 
-import { Domain, Role, Skill } from '@/models/appModels';
+import { Role } from '@/models/appModels';
 
 interface Params {
   params: { slug: string };
@@ -52,6 +56,10 @@ async function getProjectBySlug(slug: string) {
 export default async function Project({ params }: Params) {
   const { project, currentUserRole } = await getProjectBySlug(params.slug);
 
+  const domains = Array.from(
+    new Set(project.skills.map((skill) => skill.domain.name))
+  );
+
   const getLabelByRole = (role: Role): string => {
     switch (role) {
       case Role.OWNER:
@@ -73,18 +81,23 @@ export default async function Project({ params }: Params) {
       </div>
       <span>
         {!currentUserRole ? <AskToJoinSection projectId={project.id} /> : null}
+        {currentUserRole === Role.OWNER ? (
+          <Link href={`/projects/${project.slug}/edit`}>
+            <Button focusable={false}>Modifier le projet</Button>
+          </Link>
+        ) : null}
       </span>
       <Section title="Domaines et compétences">
         <div className={styles.domainsAndSkills}>
           <div className={styles.tags}>
-            <DomainTag domain={Domain.DEVELOPMENT} />
-            <DomainTag domain={Domain.UXUI_DESIGN} />
+            {domains.map((domain) => (
+              <DomainTag key={domain} domain={domain} />
+            ))}
           </div>
           <div className={styles.tags}>
-            <SkillTag skill={Skill.FRONTEND_DEVELOPMENT} />
-            <SkillTag skill={Skill.BACKEND_DEVELOPMENT} />
-            <SkillTag skill={Skill.LAYOUT_DESIGN} />
-            <SkillTag skill={Skill.USER_RESEARCH} />
+            {project.skills.map((skill) => (
+              <SkillTag key={skill.id} skill={skill.name} />
+            ))}
           </div>
         </div>
       </Section>
@@ -95,13 +108,45 @@ export default async function Project({ params }: Params) {
         <div className={styles.members}>
           {project.members.map((member) => (
             <article key={member.user.id} className={styles.member}>
-              <h4>
+              <Link
+                href={`/users/${member.user.slug}`}
+                className={`${styles.flex}`}
+              >
+                {member.user.profilePicture ? (
+                  <figure className={styles.profilePictureContainer}>
+                    <Image
+                      src={member.user.profilePicture}
+                      alt={`Photo de profil de ${member.user.firstName} ${member.user.lastName}`}
+                      fill
+                      style={{ objectPosition: 'center', objectFit: 'cover' }}
+                    />
+                  </figure>
+                ) : null}
                 {member.user.firstName} {member.user.lastName}
-              </h4>
+              </Link>
               <span>{getLabelByRole(member.role)}</span>
             </article>
           ))}
         </div>
+      </Section>
+      <Section title="Activités">
+        <ul className={styles.actions}>
+          {project.actions.map((action) => (
+            <li key={action.createdAt}>
+              <p>
+                <Link href={action.author.slug} className="link">
+                  {action.author.firstName} {action.author.lastName}
+                </Link>
+                {` `}
+                {action.name}
+                {` `}
+                <span className="small">
+                  {getTimeElapsedSinceDate(action.createdAt)}
+                </span>
+              </p>
+            </li>
+          ))}
+        </ul>
       </Section>
     </div>
   );

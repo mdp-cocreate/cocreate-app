@@ -8,4 +8,5 @@ export const labelForPath: LabelForPath[] = [
   { path: 'users', label: 'Utilisateurs' },
   { path: 'settings', label: 'Paramètres' },
   { path: 'search', label: 'Recherche' },
+  { path: 'edit', label: 'Edition' },
 ];

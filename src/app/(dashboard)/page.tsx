@@ -42,7 +42,7 @@ export default async function Dashboard() {
       <div className={styles.body}>
         <section className={styles.section}>
           <ProjectPreviewsSection
-            title="Projets qui pourraient vous intéresser"
+            title="Ces projets qui pourraient vous intéresser"
             projectPreviews={projectPreviewsThatMatchTheUsersDomains}
           />
         </section>

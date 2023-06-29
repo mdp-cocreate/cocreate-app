@@ -9,7 +9,6 @@ import { capitalize } from '@/utils/capitalize';
 import { getTimeElapsedSinceDate } from '@/utils/getTimeElapsedSinceDate';
 
 import { Button } from '@/components/atoms/Button/Button';
-import { IconButton } from '@/components/atoms/IconButton/IconButton';
 
 import { JoinRequest } from '@/models/projectModels';
 

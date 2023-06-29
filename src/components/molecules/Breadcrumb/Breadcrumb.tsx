@@ -38,7 +38,12 @@ export const Breadcrumb = () => {
 
     return (
       <li className={styles.item}>
-        <Link href={href} className={isCurrentPath ? styles.active : ''}>
+        <Link
+          href={href}
+          className={`${isCurrentPath ? styles.active : ''} ${
+            ['users', 'projects'].includes(path) ? styles.active : ''
+          }`}
+        >
           {labelByPath ? labelByPath : getLabelBySlug(path)}
         </Link>
       </li>

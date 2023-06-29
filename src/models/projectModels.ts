@@ -12,10 +12,11 @@ export interface Project {
   updatedAt: Date;
   skills: {
     id: number;
-    name: Skill[];
+    name: Skill;
     domain: DomainModel;
   }[];
   members: ProjectMember[];
+  actions: ProjectActions[];
 }
 
 export interface ProjectMember {
@@ -26,6 +27,16 @@ export interface ProjectMember {
     firstName: string;
     lastName: string;
     profilePicture: string | null;
+  };
+}
+
+export interface ProjectActions {
+  name: string;
+  createdAt: string;
+  author: {
+    slug: string;
+    firstName: string;
+    lastName: string;
   };
 }
 
