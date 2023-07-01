@@ -54,7 +54,8 @@ async function getProjectBySlug(slug: string) {
 }
 
 export default async function Project({ params }: Params) {
-  const { project, currentUserRole } = await getProjectBySlug(params.slug);
+  const { project, currentUserRole, hasRequestedToJoin } =
+    await getProjectBySlug(params.slug);
 
   const domains = Array.from(
     new Set(project.skills.map((skill) => skill.domain.name))
@@ -80,7 +81,12 @@ export default async function Project({ params }: Params) {
         <p>{project.shortDescription}</p>
       </div>
       <span>
-        {!currentUserRole ? <AskToJoinSection projectId={project.id} /> : null}
+        {!currentUserRole ? (
+          <AskToJoinSection
+            projectId={project.id}
+            hasRequestedToJoin={hasRequestedToJoin}
+          />
+        ) : null}
         {currentUserRole === Role.OWNER ? (
           <Link href={`/projects/${project.slug}/edit`}>
             <Button focusable={false}>Modifier le projet</Button>
@@ -132,7 +138,7 @@ export default async function Project({ params }: Params) {
       <Section title="Activités">
         <ul className={styles.actions}>
           {project.actions.map((action) => (
-            <li key={action.createdAt}>
+            <li key={action.createdAt} className={styles.action}>
               <p>
                 <Link href={action.author.slug} className="link">
                   {action.author.firstName} {action.author.lastName}

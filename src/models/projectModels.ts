@@ -43,6 +43,7 @@ export interface ProjectActions {
 export interface RetrievedCompleteProject {
   project: Project;
   currentUserRole: Role | null;
+  hasRequestedToJoin: boolean;
 }
 
 export interface ProjectPreview {
@@ -91,4 +92,9 @@ export interface JoinRequest {
     name: string;
   };
   createdAt: Date;
+}
+
+export interface AcceptJoinRequestDto {
+  projectSlug: string;
+  userSlug: string;
 }

@@ -3,6 +3,7 @@ import { Metadata } from 'next';
 import styles from './page.module.scss';
 
 import { Section } from '@/components/molecules/Section/Section';
+import { ProfileForm } from '@/components/organisms/ProfileForm/ProfileForm';
 
 export const metadata: Metadata = {
   title: 'Paramètres',
@@ -14,7 +15,10 @@ export default function Settings() {
     <div className={styles.settingsPage}>
       <h1 className={styles.heading}>Paramètres</h1>
       <div className={styles.body}>
-        <Section title="Profil">Profil</Section>
+        <Section title="Profil">
+          <p style={{ marginBottom: '2rem' }}>Modifier votre photo de profil</p>
+          <ProfileForm />
+        </Section>
         <Section title="Informations de connexion">
           Informations de connexion
         </Section>

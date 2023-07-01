@@ -16,7 +16,7 @@ interface Params {
 }
 
 async function getUserMetadata(slug: string) {
-  const response = await userServices.getProjectMetadata(slug);
+  const response = await userServices.getUserMetadata(slug);
 
   if (response.status === 404) notFound();
   if (response.status === 200 && response.data) return response.data;

@@ -2,6 +2,7 @@ import { fetchWithApiKey } from './fetchWithApiKey';
 
 import { Domain, Skill } from '@/models/appModels';
 import {
+  AcceptJoinRequestDto,
   CreateProjectDto,
   JoinRequest,
   Project,
@@ -321,6 +322,26 @@ export const projectServices = {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(updateProjectDto),
+      }
+    )
+      .then((response) => ({ status: response.status }))
+      .catch(() => ({ status: 500 }));
+  },
+
+  async manageJoinRequest(
+    token: string,
+    acceptJoinRequestDto: AcceptJoinRequestDto,
+    type: 'accept' | 'deny'
+  ) {
+    return fetchWithApiKey(
+      `${process.env.NEXT_PUBLIC_API_URL}/projects/${type}-join-request`,
+      {
+        method: 'POST',
+        headers: {
+          authorization: `Bearer ${token}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(acceptJoinRequestDto),
       }
     )
       .then((response) => ({ status: response.status }))

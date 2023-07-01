@@ -1,6 +1,6 @@
 'use client';
 
-import { Badge, Dropdown, Popover } from 'antd';
+import { Badge, Popover } from 'antd';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useRouter } from 'next/navigation';
@@ -85,7 +85,12 @@ export const TopBar = ({ setIsCreateProjectDrawerOpened }: Props) => {
           </Link>
         </li>
         <Popover
-          content={<JoinRequestsList joinRequests={joinRequests || []} />}
+          content={
+            <JoinRequestsList
+              joinRequests={joinRequests || []}
+              setJoinRequests={setJoinRequests}
+            />
+          }
           placement="bottomLeft"
         >
           <li>

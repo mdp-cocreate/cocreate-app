@@ -1,5 +1,6 @@
 import { fetchWithApiKey } from './fetchWithApiKey';
 
+import { RegisterDto } from '@/models/authModels';
 import { RetrievedUserProfile, User, UserMetadata } from '@/models/userModels';
 
 export const userServices = {
@@ -24,7 +25,7 @@ export const userServices = {
       .catch(() => ({ status: 500 }));
   },
 
-  async getProjectMetadata(slug: string): Promise<{
+  async getUserMetadata(slug: string): Promise<{
     status: number;
     data?: {
       metadata: UserMetadata;
@@ -65,6 +66,36 @@ export const userServices = {
             status: response.status,
             data,
           }));
+        return { status: response.status };
+      })
+      .catch(() => ({ status: 500 }));
+  },
+
+  async updateUserProfile(
+    token: string,
+    updateUserDto: Partial<RegisterDto>
+  ): Promise<{
+    status: number;
+    data?: {
+      user: RetrievedUserProfile;
+    };
+  }> {
+    return fetchWithApiKey(`${process.env.NEXT_PUBLIC_API_URL}/users`, {
+      method: 'PATCH',
+      headers: {
+        authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(updateUserDto),
+    })
+      .then((response) => {
+        if (response.ok)
+          return response
+            .json()
+            .then((data: { user: RetrievedUserProfile }) => ({
+              status: response.status,
+              data,
+            }));
         return { status: response.status };
       })
       .catch(() => ({ status: 500 }));
