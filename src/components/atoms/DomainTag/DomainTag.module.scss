@@ -1,0 +1,25 @@
+@import 'src/styles/app';
+
+.domainTag {
+  @include text-no-wrap;
+  padding: 0.5rem 1rem;
+  background-color: $primary-light;
+  border-radius: .25rem;
+  color: $primary;
+
+  $categories: (
+    'uiuxDesign': $uiux-design,
+    'development': $development,
+    'graphicDesign': $graphic-design,
+    'webmarketing': $webmarketing,
+    'cybersecurity': $cybersecurity,
+    'data': $data,
+    'audiovisual': $audiovisual,
+  );
+
+  @each $class, $variable in $categories {
+    &.#{$class} {
+      color: $variable;
+    }
+  }
+}

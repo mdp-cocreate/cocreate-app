@@ -1,0 +1,50 @@
+@import 'src/styles/app';
+
+.projectPreviewCard {
+  width: 21rem;
+  min-width: 21rem;
+  border-radius: 0.25rem;
+  overflow: hidden;
+  background-color: $neutral-2-bis;
+
+  &.fill {
+    width: 100%;
+    min-width: auto;
+  }
+
+  .coverImageContainer {
+    width: 100%;
+    height: 11.5rem;
+    position: relative;
+  }
+
+  .body {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    .projectNameLink {
+      color: $neutral;
+
+      transition: color $transition-duration;
+
+      &:hover {
+        color: $primary;
+      }
+
+      .title {
+        @include text-no-wrap;
+      }
+    }
+
+    .shortDescription {
+      @include text-no-wrap;
+    }
+
+    .createdAt {
+      @include text-no-wrap;
+      color: $neutral-3;
+    }
+  }
+}

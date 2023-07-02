@@ -1,0 +1,19 @@
+.profileForm {
+  width: 43rem;
+  max-width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+
+  .buttonsContainer {
+    display: flex;
+    gap: 1rem;
+  }
+}

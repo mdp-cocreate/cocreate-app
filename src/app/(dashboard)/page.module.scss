@@ -1,0 +1,11 @@
+.homePage {
+  .head {
+    padding: 2.5rem 1.5rem;
+  }
+
+  .body {
+    > .section {
+      margin-top: 2.5rem;
+    }
+  }
+}

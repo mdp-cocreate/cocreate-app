@@ -1,0 +1,10 @@
+@import 'src/styles/app';
+
+.section {
+  background-color: $neutral-2-bis;
+  padding: 1.5rem;
+
+  .title {
+    margin-bottom: 2rem;
+  }
+}

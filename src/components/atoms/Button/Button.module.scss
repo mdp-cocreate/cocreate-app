@@ -21,7 +21,7 @@
   justify-content: center;
   gap: 0.5rem;
 
-  transition: background-color $transition-duration;
+  transition: background-color $transition-duration, color $transition-duration;
 
   &:hover {
     background-color: $primary-dark;
@@ -31,5 +31,20 @@
     pointer-events: none;
     background-color: $primary-light;
     color: $neutral-3;
+  }
+
+  &.secondary {
+    background-color: $primary-light;
+    color: $primary;
+
+    &:hover {
+      background-color: $primary;
+      color: $primary-light;
+    }
+  }
+
+  &.block {
+    display: block;
+    width: 100%;
   }
 }

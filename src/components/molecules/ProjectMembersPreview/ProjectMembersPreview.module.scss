@@ -1,0 +1,55 @@
+@import 'src/styles/app';
+
+.projectMembersPreview {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  height: 2rem;
+
+  .membersContainer {
+    display: flex;
+    align-items: flex-end;
+    height: 100%;
+
+    .profilePictureContainer {
+      width: 1.5rem;
+      height: 1.5rem;
+      border-radius: 50%;
+      overflow: hidden;
+      position: relative;
+
+      transition: $transition-duration ease-in-out;
+
+      &:nth-child(2) {
+        width: 2rem;
+        height: 2rem;
+      }
+
+      &:not(:first-of-type):not(:last-of-type) {
+        z-index: 1;
+      }
+
+      &:not(:first-of-type) {
+        margin-left: -0.75rem;
+      }
+    }
+
+    &:hover {
+      .profilePictureContainer {
+        &:first-of-type,
+        &:last-of-type {
+          width: 2rem;
+          height: 2rem;
+        }
+
+        &:not(:first-of-type) {
+          margin-left: 0.25rem;
+        }
+      }
+    }
+  }
+
+  .additionalMembersCount {
+    color: $neutral-3;
+  }
+}

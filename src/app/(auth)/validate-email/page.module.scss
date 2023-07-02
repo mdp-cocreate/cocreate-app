@@ -1,0 +1,27 @@
+.errorMessage {
+  padding: 1.5rem 1.5rem;
+}
+
+.validateEmailPage {
+  padding: 1.5rem 1.5rem;
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 2rem;
+
+    .figure {
+      position: relative;
+      width: 20rem;
+      height: 14rem;
+    }
+  }
+}

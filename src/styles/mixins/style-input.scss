@@ -6,6 +6,7 @@
   border: 1px solid $neutral-3;
   border-radius: 0.25rem;
   padding: 0.625rem 1rem;
+  background-color: $neutral-2;
 
   font-style: normal;
   font-weight: 400;
@@ -16,5 +17,14 @@
 
   &:hover, &:active, &:focus {
     border-color: $primary;
+  }
+
+  &[type="password"] {
+    letter-spacing: .25rem;
+  }
+
+  &:disabled {
+    pointer-events: none;
+    opacity: .5;
   }
 }

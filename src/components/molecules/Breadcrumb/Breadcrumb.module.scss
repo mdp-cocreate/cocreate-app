@@ -7,6 +7,7 @@
   overflow: auto;
 
   .item {
+    @include text-no-wrap;
     line-height: 1rem;
     padding: 0.75rem 0;
 

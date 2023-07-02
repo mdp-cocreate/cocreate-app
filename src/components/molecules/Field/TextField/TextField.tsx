@@ -17,21 +17,31 @@ interface Rule {
 }
 
 interface Props {
-  label: string;
-  type?: 'text' | 'email' | 'tel' | 'url';
+  label?: string;
+  placeholder?: string;
+  type?: 'text' | 'email' | 'tel' | 'url' | 'password';
+  minLength?: number;
+  maxLength?: number;
   rules?: Rule[];
+  disabled?: boolean;
   setIsValid?: Dispatch<SetStateAction<boolean>>;
+  defaultValue?: string;
   onValueChange?: (value: string) => void;
 }
 
 export const TextField = ({
   label,
+  placeholder,
   type = 'text',
+  minLength,
+  maxLength,
   rules,
+  disabled = false,
   setIsValid,
+  defaultValue = '',
   onValueChange,
 }: Props) => {
-  const [value, setValue] = useState('');
+  const [value, setValue] = useState(defaultValue);
   const [isFocus, setIsFocus] = useState(false);
 
   const displayRules = (): ReactNode => {
@@ -68,9 +78,13 @@ export const TextField = ({
   return (
     <Field label={label}>
       <input
+        placeholder={placeholder}
         id={label}
         type={type}
+        minLength={minLength}
+        maxLength={maxLength}
         className={styles.textField}
+        disabled={disabled}
         value={value}
         onChange={({ target }) => {
           setValue(target.value);

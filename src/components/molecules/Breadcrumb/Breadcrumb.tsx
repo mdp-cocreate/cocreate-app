@@ -6,7 +6,7 @@ import styles from './Breadcrumb.module.scss';
 
 import { labelForPath } from '@/constants/labelForPath';
 
-import { capitalize } from '@/utils/capitalize';
+import { getLabelBySlug } from '@/utils/getLabelBySlug';
 
 export const Breadcrumb = () => {
   const pathname = usePathname();
@@ -26,7 +26,7 @@ export const Breadcrumb = () => {
 
   const getLabelByPath = (path: string) => {
     const itemFound = labelForPath.find((item) => item.path === path);
-    return <>{itemFound ? itemFound.label : capitalize(path)}</>;
+    return itemFound?.label;
   };
 
   const renderBreadcrumbItemByPath = (path: string, index: number) => {
@@ -34,11 +34,17 @@ export const Breadcrumb = () => {
 
     const href = '/' + pathnameSplitted.slice(0, index + 1).join('/');
 
+    const labelByPath = getLabelByPath(path);
+
     return (
       <li className={styles.item}>
-        <Link href={href} className={isCurrentPath ? styles.active : ''}>
-          {/* TODO Handle dynamic route display */}
-          {getLabelByPath(path)}
+        <Link
+          href={href}
+          className={`${isCurrentPath ? styles.active : ''} ${
+            ['users', 'projects'].includes(path) ? styles.active : ''
+          }`}
+        >
+          {labelByPath ? labelByPath : getLabelBySlug(path)}
         </Link>
       </li>
     );

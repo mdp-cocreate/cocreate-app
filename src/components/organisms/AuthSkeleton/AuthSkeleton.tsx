@@ -1,6 +1,5 @@
-import { PropsWithChildren } from 'react';
-
 import Image from 'next/image';
+import { PropsWithChildren } from 'react';
 
 import styles from './AuthSkeleton.module.scss';
 
