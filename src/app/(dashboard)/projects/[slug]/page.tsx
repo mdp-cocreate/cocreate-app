@@ -10,7 +10,6 @@ import { getTokenServerSide } from '@/utils/getTokenServerSide';
 
 import { projectServices } from '@/services/projectServices';
 
-import { Button } from '@/components/atoms/Button/Button';
 import { DomainTag } from '@/components/atoms/DomainTag/DomainTag';
 import { SkillTag } from '@/components/atoms/SkillTag/SkillTag';
 import { AskToJoinSection } from '@/components/molecules/AskToJoinSection/AskToJoinSection';
@@ -98,11 +97,11 @@ export default async function Project({ params }: Params) {
               hasRequestedToJoin={hasRequestedToJoin}
             />
           ) : null}
-          {currentUserRole === Role.OWNER ? (
+          {/* {currentUserRole === Role.OWNER ? (
             <Link href={`/projects/${project.slug}/edit`}>
               <Button focusable={false}>Modifier le projet</Button>
             </Link>
-          ) : null}
+          ) : null} */}
         </span>
         <Section title="Domaines et compétences">
           <div className={styles.domainsAndSkills}>
