@@ -8,6 +8,7 @@ import { getIconByDomain } from '@/utils/getIconByDomain';
 import { getLabelByDomain } from '@/utils/getLabelByDomain';
 import { manageToken } from '@/utils/manageToken';
 
+import { LogoutIcon } from '@/components/atoms/icons/LogoutIcon/LogoutIcon';
 import { SettingsIcon } from '@/components/atoms/icons/SettingsIcon/SettingsIcon';
 import { SideBarLink } from '@/components/molecules/SideBarLink/SideBarLink';
 
