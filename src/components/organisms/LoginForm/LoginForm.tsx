@@ -37,6 +37,11 @@ export const LoginForm = () => {
     if (response.status === 401)
       return setError('Identifiant ou mot de passe incorrect(s).');
 
+    if (response.status === 403)
+      return setError(
+        "Vous devez d'abord vérifier votre compte. Veuillez consulter votre boîte mail."
+      );
+
     if (response.status === 201 && response.data) {
       manageToken.set(response.data.token);
       router.refresh();

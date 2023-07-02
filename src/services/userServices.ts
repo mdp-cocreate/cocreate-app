@@ -1,7 +1,12 @@
 import { fetchWithApiKey } from './fetchWithApiKey';
 
 import { RegisterDto } from '@/models/authModels';
-import { RetrievedUserProfile, User, UserMetadata } from '@/models/userModels';
+import {
+  RetrievedUserProfile,
+  User,
+  UserMetadata,
+  UserProfile,
+} from '@/models/userModels';
 
 export const userServices = {
   async getUserProfileBySlug(
@@ -51,7 +56,7 @@ export const userServices = {
   async getCurrentUserProfile(token: string): Promise<{
     status: number;
     data?: {
-      user: User;
+      user: UserProfile;
     };
   }> {
     return fetchWithApiKey(`${process.env.NEXT_PUBLIC_API_URL}/users/current`, {

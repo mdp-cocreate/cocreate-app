@@ -161,6 +161,7 @@ const CreateProjectForm = ({ closeDrawer }: Props) => {
                 (selectedDomain) => selectedDomain === domain.name
               )}
               onChange={(checked) => {
+                setSkills([]);
                 if (checked)
                   setSelectedDomains([...selectedDomains, domain.name]);
                 else

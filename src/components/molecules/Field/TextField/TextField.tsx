@@ -23,6 +23,7 @@ interface Props {
   minLength?: number;
   maxLength?: number;
   rules?: Rule[];
+  disabled?: boolean;
   setIsValid?: Dispatch<SetStateAction<boolean>>;
   defaultValue?: string;
   onValueChange?: (value: string) => void;
@@ -35,6 +36,7 @@ export const TextField = ({
   minLength,
   maxLength,
   rules,
+  disabled = false,
   setIsValid,
   defaultValue = '',
   onValueChange,
@@ -82,6 +84,7 @@ export const TextField = ({
         minLength={minLength}
         maxLength={maxLength}
         className={styles.textField}
+        disabled={disabled}
         value={value}
         onChange={({ target }) => {
           setValue(target.value);

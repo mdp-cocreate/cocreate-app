@@ -68,11 +68,16 @@ export const projectServices = {
 
   async getProjectPreviewsThatTheUserOwns(
     token: string,
+    userId?: number,
     skip = 0,
     take = 5
   ): Promise<{ status: number; data?: { previews: ProjectPreview[] } }> {
     return fetchWithApiKey(
-      `${process.env.NEXT_PUBLIC_API_URL}/projects/owned?skip=${skip}&take=${take}`,
+      `${
+        process.env.NEXT_PUBLIC_API_URL
+      }/projects/owned?skip=${skip}&take=${take}${
+        userId ? `&userId=${userId}` : ''
+      }`,
       {
         method: 'GET',
         headers: {
@@ -95,11 +100,16 @@ export const projectServices = {
 
   async getProjectPreviewsOfWhichTheUserIsAMember(
     token: string,
+    userId?: number,
     skip = 0,
     take = 5
   ): Promise<{ status: number; data?: { previews: ProjectPreview[] } }> {
     return fetchWithApiKey(
-      `${process.env.NEXT_PUBLIC_API_URL}/projects/member?skip=${skip}&take=${take}`,
+      `${
+        process.env.NEXT_PUBLIC_API_URL
+      }/projects/member?skip=${skip}&take=${take}${
+        userId ? `&userId=${userId}` : ''
+      }`,
       {
         method: 'GET',
         headers: {

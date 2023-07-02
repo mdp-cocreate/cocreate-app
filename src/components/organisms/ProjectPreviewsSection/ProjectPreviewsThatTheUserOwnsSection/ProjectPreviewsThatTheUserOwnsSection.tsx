@@ -26,6 +26,7 @@ export const ProjectPreviewsThatTheUserOwnsSection = ({ userId }: Props) => {
       manageToken.get() || '',
       userId
     );
+
     setProjectsPreviewsThatTheUserOwns(response?.data?.previews || []);
     setIsLoading(false);
   };

@@ -19,9 +19,6 @@ export default function Settings() {
           <p style={{ marginBottom: '2rem' }}>Modifier votre photo de profil</p>
           <ProfileForm />
         </Section>
-        <Section title="Informations de connexion">
-          Informations de connexion
-        </Section>
       </div>
     </div>
   );

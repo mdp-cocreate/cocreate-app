@@ -12,6 +12,7 @@ import { CreateProjectDto, Project } from '@/models/projectModels';
 import { Role } from '@/models/appModels';
 import { TextField } from '@/components/molecules/Field/TextField/TextField';
 import { Button } from '@/components/atoms/Button/Button';
+import { Section } from '@/components/molecules/Section/Section';
 
 interface Params {
   params: { slug: string };
@@ -65,12 +66,18 @@ export default async function Project() {
 
   if (!project) return null;
 
-  return <div className={styles.editProjectPage}>
-    <form onSubmit={handleSubmit} className={styles.editForm}>
-      <TextField label='Nom' defaultValue={project.name} onValueChange={(value) => {setProject({...project, name: value})}} />
-      <TextField label='Courte description' defaultValue={project.shortDescription} onValueChange={(value) => {setProject({...project, shortDescription: value})}} />
-      <TextField label='Description' defaultValue={project.description || ''} onValueChange={(value) => {setProject({...project, description: value})}} />
-      <Button type='submit'>Modifier</Button>
-    </form>
-  </div>;
+  return (
+    <div className={styles.editProjectPage}>
+      <Section title='Edition'>
+          <form onSubmit={handleSubmit} className={styles.editForm}>
+            <TextField label='Nom' defaultValue={project.name} onValueChange={(value) => {setProject({...project, name: value})}} />
+            <TextField label='Courte description' defaultValue={project.shortDescription} onValueChange={(value) => {setProject({...project, shortDescription: value})}} />
+            <TextField label='Description' defaultValue={project.description || ''} onValueChange={(value) => {setProject({...project, description: value})}} />
+            <div>
+              <Button type='submit'>Modifier</Button>
+            </div>
+          </form>
+      </Section>
+    </div>
+  )
 }

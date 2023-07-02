@@ -20,6 +20,7 @@ import { TextField } from '@/components/molecules/Field/TextField/TextField';
 import { Domain, DomainModel, Skill, SkillModel } from '@/models/appModels';
 
 export const RegisterForm = () => {
+  const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | ReactNode>('');
   const [step, setStep] = useState(1);
   const [isRegistrationComplete, setIsRegistrationComplete] = useState(false);
@@ -67,6 +68,7 @@ export const RegisterForm = () => {
   const [selectedSkills, setSelectedSkills] = useState<Skill[]>([]);
 
   const registerUser = async () => {
+    setIsLoading(true);
     const response = await authServices.register({
       email,
       password,
@@ -74,6 +76,7 @@ export const RegisterForm = () => {
       lastName,
       skills: selectedSkills,
     });
+    setIsLoading(false);
 
     if (response.status === 409) {
       return setError(
@@ -203,7 +206,7 @@ export const RegisterForm = () => {
             <Button
               type="submit"
               block
-              disabled={!selectedSkills.length}
+              disabled={!selectedSkills.length || isLoading}
               onClick={(e) => {
                 e.preventDefault();
                 registerUser();

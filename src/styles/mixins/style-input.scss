@@ -22,4 +22,9 @@
   &[type="password"] {
     letter-spacing: .25rem;
   }
+
+  &:disabled {
+    pointer-events: none;
+    opacity: .5;
+  }
 }
