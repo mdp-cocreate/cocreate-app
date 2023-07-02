@@ -1,3 +1,5 @@
+@import 'src/styles/app';
+
 .dashboardSkeleton {
   width: 100vw;
   max-width: 100vw;
@@ -13,7 +15,9 @@
     display: flex;
 
     .aside {
-      background-color: red;
+      @include media-breakpoint-down(md) {
+        display: none;
+      }
     }
     .page {
       flex-grow: 1;

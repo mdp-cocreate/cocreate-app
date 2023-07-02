@@ -22,6 +22,10 @@
     display: flex;
     justify-content: center;
     overflow: hidden;
+
+    @include media-breakpoint-down(sm) {
+      display: none;
+    }
   }
 
   position: relative;
