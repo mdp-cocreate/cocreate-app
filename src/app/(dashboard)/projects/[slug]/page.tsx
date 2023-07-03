@@ -150,7 +150,7 @@ export default async function Project({ params }: Params) {
             {project.actions.map((action) => (
               <li key={action.createdAt} className={styles.action}>
                 <p>
-                  <Link href={action.author.slug} className="link">
+                  <Link href={`/users/${action.author.slug}`} className="link">
                     {action.author.firstName} {action.author.lastName}
                   </Link>
                   {` `}
