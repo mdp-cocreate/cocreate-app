@@ -29,7 +29,7 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const { firstName, lastName } = metadata;
 
   const thisPageMetadata: Metadata = {
-    title: `${firstName} ${lastName}`,
+    title: `Cocréateur : ${firstName} ${lastName}`,
   };
 
   return thisPageMetadata;

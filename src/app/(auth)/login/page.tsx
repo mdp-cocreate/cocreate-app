@@ -6,7 +6,7 @@ import styles from './page.module.scss';
 import { LoginForm } from '@/components/organisms/LoginForm/LoginForm';
 
 export const metadata: Metadata = {
-  title: 'Se connecter',
+  title: 'Cocreate - Connexion',
   description: 'Connectez-vous à la plateforme Cocreate',
 };
 

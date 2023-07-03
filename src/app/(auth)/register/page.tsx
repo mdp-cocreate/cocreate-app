@@ -6,7 +6,7 @@ import styles from './page.module.scss';
 import { RegisterForm } from '@/components/organisms/RegisterForm/RegisterForm';
 
 export const metadata: Metadata = {
-  title: "S'inscrire",
+  title: 'Cocreate - Inscription',
   description: 'Inscrivez-vous sur la plateforme Cocreate',
 };
 
