@@ -39,7 +39,7 @@ export const Breadcrumb = () => {
     return (
       <li className={styles.item}>
         <Link
-          href={href}
+          href={['users', 'projects'].includes(path) ? '/' : href}
           className={`${isCurrentPath ? styles.active : ''} ${
             ['users', 'projects'].includes(path) ? styles.active : ''
           }`}
