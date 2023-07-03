@@ -35,7 +35,7 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const { name, shortDescription } = metadata;
 
   const thisPageMetadata: Metadata = {
-    title: name,
+    title: `Cocreate - ${name}`,
     description: shortDescription,
   };
 

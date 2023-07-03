@@ -6,7 +6,7 @@ import { Section } from '@/components/molecules/Section/Section';
 import { ProfileForm } from '@/components/organisms/ProfileForm/ProfileForm';
 
 export const metadata: Metadata = {
-  title: 'Paramètres',
+  title: 'Cocreate - Paramètres',
   description: 'Modifiez les paramètres et données de votre compte',
 };
 

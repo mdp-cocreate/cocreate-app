@@ -13,7 +13,7 @@ import { ProjectPreviewsThatTheUserOwnsSection } from '@/components/organisms/Pr
 import { ProjectSearchSection } from '@/components/organisms/ProjectSearchSection/ProjectSearchSection';
 
 export const metadata: Metadata = {
-  title: 'Accueil',
+  title: 'Cocreate - Accueil',
   description: 'Bienvenue sur Cocreate',
 };
 
