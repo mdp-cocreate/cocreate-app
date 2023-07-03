@@ -105,4 +105,17 @@ export const userServices = {
       })
       .catch(() => ({ status: 500 }));
   },
+
+  async deleteUserAccount(token: string): Promise<{
+    status: number;
+  }> {
+    return fetchWithApiKey(`${process.env.NEXT_PUBLIC_API_URL}/users`, {
+      method: 'DELETE',
+      headers: {
+        authorization: `Bearer ${token}`,
+      },
+    })
+      .then((response) => ({ status: response.status }))
+      .catch(() => ({ status: 500 }));
+  },
 };

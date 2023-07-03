@@ -3,7 +3,7 @@ import { PropsWithChildren } from 'react';
 import styles from './Button.module.scss';
 
 interface Props {
-  color?: 'primary' | 'secondary';
+  color?: 'primary' | 'secondary' | 'alert';
   type?: 'button' | 'submit' | 'reset';
   disabled?: boolean;
   isLoading?: boolean;
@@ -26,6 +26,8 @@ export const Button = ({
     switch (color) {
       case 'secondary':
         return styles.secondary;
+      case 'alert':
+        return styles.alert;
       default:
         return '';
     }

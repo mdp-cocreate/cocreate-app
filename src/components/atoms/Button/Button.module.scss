@@ -43,6 +43,15 @@
     }
   }
 
+  &.alert {
+    background-color: $alert;
+    color: white;
+
+    &:hover {
+      background-color: darken($alert, 5%);
+    }
+  }
+
   &.block {
     display: block;
     width: 100%;

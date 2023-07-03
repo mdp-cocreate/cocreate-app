@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 
 import styles from './page.module.scss';
 
+import { AdvancedSettings } from '@/components/molecules/AdvancedSettings/AdvancedSettings';
 import { Section } from '@/components/molecules/Section/Section';
 import { ProfileForm } from '@/components/organisms/ProfileForm/ProfileForm';
 
@@ -18,6 +19,9 @@ export default function Settings() {
         <Section title="Profil">
           <p style={{ marginBottom: '2rem' }}>Modifier votre photo de profil</p>
           <ProfileForm />
+        </Section>
+        <Section title="Avancés">
+          <AdvancedSettings />
         </Section>
       </div>
     </div>
