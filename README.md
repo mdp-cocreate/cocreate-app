@@ -1,4 +1,4 @@
-# Cocreate user interface
+# Cocreate UI
 The user interface of Cocreate, a web application that connects digital players for digital projects.
 
 ## Installation
